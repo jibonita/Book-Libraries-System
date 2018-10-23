@@ -149,4 +149,3 @@ Answer a few questions that might or might not be from the technical questionnai
 
 Give Feedback about Your Teammates
 You will be invited to provide feedback about all your teammates, their attitude to this project, their technical skills, their team working skills, their contribution to the project, etc. The feedback is important part of the project evaluation so take it seriously and be honest.
-
