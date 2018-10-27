@@ -1,6 +1,6 @@
 # TypeScript Teamwork Assignment - JavaScript Alpha Aug'18
 
-# Part 1 - Object Oriented Programming (OOP) Project
+## Object Oriented Programming (OOP) + High Quality Code (HQC) Project
 
 ## Project Description 
 
@@ -14,69 +14,37 @@ Design and implement an object-oriented application by choice. Here are some sug
     - Social network, with different users, different roles, friend list, user information, chat between users, groups of users, etc
 
 ## General Requirements
-Please define and implement the following object-oriented assets in your project:
-
-- The **OOP** principles (where applicable)
-    - Inheritance
-    - Encapsulation
-    - Abstraction
-    - Polymorphism
-
-- At least **5 interfaces** (with one or more implementations)
-- At least **15 classes** (implementing the application logic)
-- At least **3 abstract classes** (with inheritors)
-- At least **1 custom exception class** (with usage in your code) 
-- At least **3 levels of depth in inheritance**
-- At least **1 polymorphism usage**
-- At least **1 enumeration**
-- At least **1 design pattern** (e.g. Composite, Singleton, Factory, Wrapper, Bridge, Command,  etc.)
-
-You might read about design patterns in Wikipedia, Sourcemaking, DoFactory and others.
-
-## Additional Requirements
-- Follow the **best practices for OO design**: use data encapsulation, use exception handling properly, use inheritance, abstraction and polymorphism properly, follow the principles of strong cohesion and loose coupling
-- Obligatory use Git to keep your source code and for team collaboration 
-
-## Optional Requirements
-If you have a chance, time and a suitable situation, you might add some of the following to your project:
-
-- Static members (fields, properties, constructor, etc.)
-- Constants, generic types
-- User interface (UI) – console, desktop, web, mobile or as you like it the most
-- Be aware, that using the DOM could lead to tedious process of testing the code
-
-
-# Part 2 - High Quality Code (HQC) Project
-
-## Project Description
-
-Refactor and test the object-orientated application that you have developed during the previous weeks. 
-
-You should not introduce new behavior nor change the existing one!
-
-## General Requirements
-
-Please define and implement the following in your project:
-
-- Dependency inversion container (using InversifyJS)
-    - Favor composition over inheritance
-    - Introduce object lifetime management
-    - Introduce convention based binding
-
-- Unit tests
-    - Non-isolated tests will be looked upon as **invalid**!
-    - Each member must introduce **at least 10** unit tests that use **Jasmine** or any other framework (**Jest**) or set of libraries (**Mocha, Chai, Sinon**)
+Please define and implement the following assets in your project:
 
 - Project management
     - Use a Kanban board to organize your work (Trello, for example)
     - Try to estimate each user story by writing down expected time, actual time and optionally story points.
     - Active team communication is the key to success!
 
-## Additional Requirements
+- Program against abstraction not concrete classes (Use interfaces) 
+- Follow all OOP principles
+- Follow SOLID and strong cohesion and loose coupling
+- At least one level of inheritance
+- Adequate usage of polymorphism
+- Abstract classes 
+- Use enumeration
+- Dependency inversion container (using InversifyJS)
+    - Favor composition over inheritance
+    - Introduce object lifetime management
+    - Introduce convention based binding
+- Lifetime management of the objects
+- Write unit tests (At least 30 real unit test. Not including constructors!)
+    - Non-isolated tests will be looked upon as **invalid**!
+    - Each member must introduce **at least 10** unit tests that use **Jasmine** or any other framework (**Jest**) or set of libraries (**Mocha, Chai, Sinon**)
 
-- Follow the **best practices for OO design**: use data encapsulation, use exception handling properly, abstraction and polymorphism properly, follow the principles of strong cohesion and loose coupling
-- Follow the **best practices for SOLID design**
-- Obligatory use Git to keep your source code and for team collaboration (you might use https://github.com/)
+## Additional Requirements
+If you have a chance, time and a suitable situation, you might add some of the following to your project:
+
+- Static members (fields, properties, constructor, etc.)
+- Constants, generic types
+- User interface (UI) – console, desktop, web, mobile or as you like it the most
+- Be aware, that using the DOM could lead to tedious process of testing the code
+    - Try to use it only in some of the modules. Test the others
 
 ## Non-Required Work
 
