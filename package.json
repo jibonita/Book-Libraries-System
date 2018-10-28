@@ -1,0 +1,37 @@
+{
+  "name": "LIBRARYTOOL",
+  "version": "0.1.0",
+  "description": "Library typescript tool",
+  "author": "Team B3",
+  "license": "MIT",
+  "dependencies": {
+    "tsc": "^1.20150623.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/node": "^10.11.7",
+    "babel-loader": "^8.0.4",
+    "fork-ts-checker-webpack-plugin": "^0.4.13",
+    "rimraf": "^2.6.2",
+    "ts-loader": "^5.2.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-microsoft-contrib": "^5.2.1",
+    "typescript": "^3.1.3",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "start": "ts-node --project tsconfig.json ./public/src/main.ts",
+    "exec": "ts-node --project tsconfig.json",
+    "build": "npm run clean & tsc --project .",
+    "build-w": "npm run clean & tsc --project . -w",
+    "clean": "rimraf ./dist",
+    "watch": "webpack --watch"
+  }
+}
