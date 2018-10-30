@@ -213,5 +213,190 @@
     "nameOfSeries": "Джак Райън",
     "numberOfSeries": 17,
     "genre": "трилър"
+  },
+  {
+    "title": "Домт на боговете",
+    "autors": "Робърт Шекли",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "митология, научна фантастика, фентъзи"
+  },
+  {
+    "title": "Рудниците на цар Соломон",
+    "autors": "Хенри Раъдър Хагард",
+    "partOfSeries": true,
+    "nameOfSeries": "Алън Куотърмейн",
+    "numberOfSeries": 1,
+    "genre": "приключенски"
+  },
+  {
+    "title": "Алън Куотърмейн",
+    "autors": "Хенри Раъдър Хагард",
+    "partOfSeries": true,
+    "nameOfSeries": "Алън Куотърмейн",
+    "numberOfSeries": 2,
+    "genre": "приключенски"
+  },
+  {
+    "title": "Дванадесетте ръководни принципа на каратето",
+    "autors": "Гичин Фунакоши",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "самоусъвършенстване"
+  },
+  {
+    "title": "Кошерът на Хелстрьом",
+    "autors": "Франк Хърбърт",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Опцията на Тюринг 1",
+    "autors": "Хари Харисън",
+    "partOfSeries": true,
+    "nameOfSeries": "Опцията на Тюринг",
+    "numberOfSeries": 1,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Опцията на Тюринг 2",
+    "autors": "Хари Харисън",
+    "partOfSeries": true,
+    "nameOfSeries": "Опцията на Тюринг",
+    "numberOfSeries": 2,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Вирикониум",
+    "autors": "М. Джон Харисън",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "фентъзи"
+  },
+  {
+    "title": "Пътя на славата",
+    "autors": "РОбърт Хайлайн",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Бойно поле Земя 1",
+    "autors": "Л. Рон Хабърд",
+    "partOfSeries": true,
+    "nameOfSeries": "Бойно поле Земя",
+    "numberOfSeries": 1,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Бойно поле Земя 2",
+    "autors": "Л. Рон Хабърд",
+    "partOfSeries": true,
+    "nameOfSeries": "Бойно поле Земя",
+    "numberOfSeries": 2,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Бойно поле Земя 3",
+    "autors": "Л. Рон Хабърд",
+    "partOfSeries": true,
+    "nameOfSeries": "Бойно поле Земя",
+    "numberOfSeries": 3,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Пръстенът на Александър Велики",
+    "autors": "Уилям Форсчън",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Цитаделата на аутарха",
+    "autors": "Джийн Улф",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Хронолитите",
+    "autors": "Робърт Чарлз Уилсън",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Книга на Страшният съд",
+    "autors": "Кони Уилис",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Факторът Айнщайн",
+    "autors": "Уин Уенджър & Ричард По",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "психология"
+  },
+  {
+    "title": "Инзвънредна ситуация",
+    "autors": "Майкъл Уайт",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "криминален"
+  },
+  {
+    "title": "Хобит-Билбо Бегинс, или Дотам и обратно",
+    "autors": "Джон Р. Р. Толкин",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "фентъзи"
+  },
+  {
+    "title": "Властелинът на пръстена",
+    "autors": "Джон Р. Р. Толкин",
+    "partOfSeries": false,
+    "nameOfSeries": null,
+    "numberOfSeries": null,
+    "genre": "фентъзи"
+
+  },
+  {
+    "title": "Светът на мъглите",
+    "autors": "Саймън Грийн",
+    "partOfSeries": true,
+    "nameOfSeries": "Светът на мъглите",
+    "numberOfSeries": 1,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Светът на призраците",
+    "autors": "Саймън Грийн",
+    "partOfSeries": true,
+    "nameOfSeries": "Светът на мъглите",
+    "numberOfSeries": 2,
+    "genre": "научна фантастика"
+  },
+  {
+    "title": "Адски свят",
+    "autors": "Саймън Грийн",
+    "partOfSeries": true,
+    "nameOfSeries": "Светът на мъглите",
+    "numberOfSeries": 3,
+    "genre": "научна фантастика"
   }
 ]
