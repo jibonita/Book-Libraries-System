@@ -3,7 +3,7 @@ import { Libraries } from "../enums/library";
 export interface IBooks {
   title: string;
   autors: string;
-  isbn: string;
+  partOfSeries: boolean;
   genre:BookGenre;
   availability: Libraries;
 
