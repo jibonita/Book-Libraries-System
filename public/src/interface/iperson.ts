@@ -3,5 +3,5 @@ export interface IPerson{
   name:string,
   gender:GenderType,
   age:number,
-  adress:string;
+  address:string;
 } 
