@@ -1,0 +1,4 @@
+/* 
+if the user is the owner of the library
+removes selected book from selected library
+*/

@@ -1,0 +1,6 @@
+/*
+access to list with all created libraries
+access to list with all registered owners
+access to list with all registered users
+access to list with all added books
+*/

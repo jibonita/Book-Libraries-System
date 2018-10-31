@@ -1,0 +1,4 @@
+/*
+if user is the owner of the library
+removes selected library
+*/
