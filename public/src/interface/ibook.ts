@@ -1,8 +1,8 @@
 import { BookGenre } from '../enums/bookGenre';
 import { Libraries } from "../enums/library";
-export interface IBooks {
+export interface IBook {
   title: string;
-  autors: string;
+  authors: string;
   partOfSeries: boolean;
   genre:BookGenre;
   availability: Libraries;
