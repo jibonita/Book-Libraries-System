@@ -5,6 +5,12 @@
   "author": "Team B3",
   "license": "MIT",
   "dependencies": {
+    "@types/inversify": "^2.0.33",
+    "@types/materialize-css": "^1.0.5",
+    "@types/reflect-metadata": "^0.1.0",
+    "inversify": "^5.0.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "reflect-metadata": "^0.1.12",
     "tsc": "^1.20150623.0"
   },
   "devDependencies": {
