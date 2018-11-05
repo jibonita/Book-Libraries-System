@@ -1,5 +1,5 @@
 import { Libraries } from "../enums/library";
-import { IPerson } from "./iperson";
+import { IPerson } from "./iadd-user";
 
 export interface ILibrary {
     owner: IPerson;

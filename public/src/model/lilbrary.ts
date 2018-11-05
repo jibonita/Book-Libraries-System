@@ -1,5 +1,5 @@
-import { ILibrary } from "../interface/ilibrary";
-import { IPerson } from "../interface/iperson";
+import { ILibrary } from "../interface/icreate-library";
+import { IPerson } from "../interface/iadd-user";
 import { Libraries } from "../enums/library";
 import { IBook } from "../interface/ibook";
 
