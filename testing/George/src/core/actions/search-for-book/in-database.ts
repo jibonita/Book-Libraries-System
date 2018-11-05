@@ -1,3 +1,0 @@
-/* 
-Searching in the common book database
-*/

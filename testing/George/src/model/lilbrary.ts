@@ -1,7 +1,7 @@
-import { ILibrary } from "../core/actions/contracts/ilibrary";
-import { IPerson } from "../core/actions/contracts/iperson";
+import { ILibrary } from "../interface/ilibrary";
+import { IPerson } from "../interface/iperson";
 import { Libraries } from "../enums/library";
-import { IBook } from "../core/actions/contracts/ibook";
+import { IBook } from "../interface/ibook";
 
 class Library implements ILibrary {
   private readonly _owner: IPerson;

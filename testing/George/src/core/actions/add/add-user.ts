@@ -1,4 +1,0 @@
-/* 
-adding user to user database 
-along with their information
-*/

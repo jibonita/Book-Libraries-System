@@ -1,4 +1,0 @@
-/*
-if owner of library 
-adds book to the collection of library
-*/
