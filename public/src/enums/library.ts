@@ -4,5 +4,6 @@
 export enum Libraries{
   Stolichna,
   Narodna,
-  Medicinska
+  Medicinska,
+  
 }
