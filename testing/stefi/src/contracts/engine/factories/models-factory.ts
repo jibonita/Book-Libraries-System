@@ -1,10 +1,12 @@
-import { MaterialType } from '../../../models/common/material-type';
-import { IChair, ICompany, ITable } from '../../models';
-
+import { Libraries, BookGenre, UserType } from '../../../enums';
+import { IBook, ILibrary, IUser } from '../../../contracts/models';
+import {  BookTracker } from '../../../models';
 export interface IModelsFactory {
-  createTable(model: string, materialType: MaterialType, price: number, height: number, length: number, width: number): ITable;
+  addUser(name: string, password: string, userType: UserType): IUser;
 
-  createChair(model: string, materialType: MaterialType, price: number, height: number, numberOfLegs: number): IChair;
+  addBook(title: string, author: string, genre: BookGenre, availability: boolean): IBook;
 
-  createCompany(name: string, registrationNumber: string): ICompany;
+  addLibrary(owner: IUser, name: (Libraries| string), address: string): ILibrary;
 }
+
+

@@ -5,32 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Add user</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./src/css/main.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="./src/css/materialize.min.css"  media="screen,projection"/>
-    
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+    <script src="../../dist/bundle.js"></script>
+    <script src="../js/materialize.min.js"></script>
 </head>
 <body>
     
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Welcome</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Resister</a></li>
-        <li><a href="#">Nothing!</a></li>
-      </ul>
-    </div>
-  </nav>
-
     <div class="row">
         <form class="col s12">
           <div class="row">
             <div class="input-field col s6">
                 Username: 
               <div class="input-field inline">
-                    <input placeholder="Name" id="first_name" type="text" class="validate">
-                    <label for="first_name"></label>
+                    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                    <label for="first_name">input name</label>
                   </div>
             </div>
           </div>
@@ -38,8 +27,8 @@
             <div class="input-field col s12">
                 Password:
               <div class="input-field inline">
-                    <input placeholder="Password" id="password" type="password" class="validate">
-                    <label for="password"></label>
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
                   </div>
             </div>
           </div>
@@ -56,8 +45,10 @@
           </div>
         </form>
       </div>
-      <a class="waves-effect waves-light btn">Click me!</a>
 
-<script src="./dist/bundle.js"></script>
+      <div class="card-panel s2">
+            <span class="blue-text text-darken-2">Display Created user if user was created</span>
+          </div>
+
 </body>
 </html>

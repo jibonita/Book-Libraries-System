@@ -1,9 +1,43 @@
-import { FileReader } from "./engine/reader";
+// tslint:disable-next-line
 
-console.log('typescript stefi');
+console.log("type");
+// import 'reflect-metadata';
+// import { container } from './common/ioc.config';
+// import { TYPES } from './common/types';
+// import {
+//   ICommandFactory,
+//   ICommandProcessor,
+//   IDataFormatter,
+//   IEngine,
+//   IReader,
+//   IWriter
+// } from './contracts';
+// import {
+//   CommandFactory,
+//   CommandProcessor,
+//   DataFormatter,
+//   Engine,
+//   HtmlReader,
+//   HtmlWriter,
+//   } from './engine';
 
-const file:string = "./files/library/stefyLibrary.json";
+// const commandFactory: ICommandFactory = new CommandFactory(null, null);
+// const commandProcessor: ICommandProcessor = new CommandProcessor(commandFactory);
 
-const fr: FileReader = new FileReader();
-const content: Promise<string[]> = fr.read(file);
-content.then((res: string[]) => console.log(res));
+// const dataFormatter: IDataFormatter = new DataFormatter();
+// const htmlReader: IReader = new HtmlReader(dataFormatter);
+// const htmlWriter: IWriter = new HtmlWriter();
+
+
+// const runInBrowserEnvironment: () => void = (): void => {
+//   const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
+//   const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
+//   runButton.addEventListener('click', () => engine.start());
+// };
+
+// const runWithContainer: () => void = (): void => {
+//   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
+//   containerEngine.start();
+// };
+
+// runWithContainer();
