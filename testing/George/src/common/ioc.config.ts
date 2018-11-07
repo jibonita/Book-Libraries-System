@@ -18,7 +18,8 @@ import {
     IFuritureDatabase,
     IModelsFactory,
     IReader,
-    IWriter
+    IWriter,
+    ITakeUserInput
 } from '../contracts';
 import {
     CommandFactory,
@@ -28,7 +29,10 @@ import {
     DataFormatter,
     Engine,
     FileReader,
-    ModelsFactory
+    ModelsFactory,
+    HtmlReader,
+    HtmlWriter,
+    TakeUserInput
 } from '../engine';
 import { TYPES } from './types';
 
@@ -37,9 +41,10 @@ const container: Container = new Container();
 container.bind<IModelsFactory>(TYPES.modelsFactory).to(ModelsFactory);
 container.bind<ICommandProcessor>(TYPES.commandProcessor).to(CommandProcessor);
 container.bind<IDataFormatter>(TYPES.dataFormatter).to(DataFormatter);
+container.bind<ITakeUserInput>(TYPES.userInput).to(TakeUserInput); // new binding, takes user input for login
 container.bind<IEngine>(TYPES.engine).to(Engine);
-container.bind<IReader>(TYPES.reader).to(FileReader); // Change here if you need html reader
-container.bind<IWriter>(TYPES.writer).to(ConsoleWriter); // Change here if you need html writer
+container.bind<IReader>(TYPES.reader).to(HtmlReader); // Change here if you need html reader
+container.bind<IWriter>(TYPES.writer).to(HtmlWriter); // Change here if you need html writer
 
 container.bind<ICommand>(TYPES.createchair).to(CreateChair);
 container.bind<ICommand>(TYPES.createcompany).to(CreateCompany);

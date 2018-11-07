@@ -5,6 +5,7 @@ export const TYPES: any = {
     commandFactory: Symbol.for('commandFactory'),
     commandProcessor: Symbol.for('commandProcessor'),
     dataFormatter: Symbol.for('dataFormatter'),
+    userInput: Symbol.for('userInput'),
     reader: Symbol.for('reader'),
     writer: Symbol.for('writer'),
     engine: Symbol.for('engine'),

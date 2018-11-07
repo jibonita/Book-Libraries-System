@@ -7,9 +7,9 @@ export class Constants {
   //   return `Company ${companyName} created`;
   // }
 
-  // public static getFurnitureAddedSuccessMessage(furnitureModel: string, companyName: string): string {
-  //   return `Furniture ${furnitureModel} added to company ${companyName}`;
-  // }
+  public static getUserAddedSuccessMessage(user: string,): string {
+    return `User with name: ${user} added to database`;
+  }
 
   // public static getFurnitureRemovedSuccessMessage(furnitureModel: string, companyName: string): string {
   //   return `Furniture ${furnitureModel} removed from company ${companyName}`;
@@ -20,9 +20,9 @@ export class Constants {
   //   return `Invalid command name: ${commandName}`;
   // }
 
-  // public static getFurnitureExistsErrorMessage(furnitureModel: string): string {
-  //   return `Furniture ${furnitureModel} already exists`;
-  // }
+  public static getUserExistsErrorMessage(user: string): string {
+     return `User with Name: ${user} already exists`;
+   }
 
   // public static getCompanyExistsErrorMessage(companyName: string): string {
   //   return `Company ${companyName} already exists`;

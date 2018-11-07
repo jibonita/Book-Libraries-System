@@ -1,43 +1,50 @@
-// tslint:disable-next-line
 
-console.log("type");
-// import 'reflect-metadata';
-// import { container } from './common/ioc.config';
-// import { TYPES } from './common/types';
-// import {
-//   ICommandFactory,
-//   ICommandProcessor,
-//   IDataFormatter,
-//   IEngine,
-//   IReader,
-//   IWriter
-// } from './contracts';
-// import {
-//   CommandFactory,
-//   CommandProcessor,
-//   DataFormatter,
-//   Engine,
-//   HtmlReader,
-//   HtmlWriter,
-//   } from './engine';
+import 'reflect-metadata';
+import { container } from './common/ioc.config';
+import { TYPES } from './common/types';
+import { ICommandProcessor, IEngine, IReader, IWriter } from './contracts';
+import {
+    CommandFactory,
+    CommandProcessor,
+    ConsoleWriter,
+    DataFormatter,
+    Engine,
+    FileReader,
+    HtmlReader,
+    HtmlWriter,
+    ModelsFactory
+  } from './engine';
+const engine: IEngine = new Engine(new StringProcessor(new ConsoleWriter()), new ConsoleReader(), new ConsoleWriter());
 
-// const commandFactory: ICommandFactory = new CommandFactory(null, null);
-// const commandProcessor: ICommandProcessor = new CommandProcessor(commandFactory);
-
-// const dataFormatter: IDataFormatter = new DataFormatter();
-// const htmlReader: IReader = new HtmlReader(dataFormatter);
-// const htmlWriter: IWriter = new HtmlWriter();
+engine.start();
 
 
-// const runInBrowserEnvironment: () => void = (): void => {
-//   const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
-//   const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
-//   runButton.addEventListener('click', () => engine.start());
-// };
+const data: IFuritureDatabase = new FurnitureDatabase();
+const modelsFactory: IModelsFactory = new ModelsFactory();
 
-// const runWithContainer: () => void = (): void => {
-//   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-//   containerEngine.start();
-// };
+const commandFactory: ICommandFactory = new CommandFactory(data, modelsFactory);
+const commandProcessor: ICommandProcessor = new CommandProcessor(commandFactory);
 
-// runWithContainer();
+const dataFormatter: IDataFormatter = new DataFormatter();
+const fileReader: IReader = new FileReader(dataFormatter);
+const htmlReader: IReader = new HtmlReader(dataFormatter);
+
+const consoleWriter: IWriter = new ConsoleWriter();
+const htmlWriter: IWriter = new HtmlWriter();
+
+const runInLocalEnvironment: () => void = (): void => {
+  const engine: IEngine = new Engine(commandProcessor, fileReader, consoleWriter);
+  engine.start();
+};
+
+const runInBrowserEnvironment: () => void = (): void => {
+  const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
+  engine.start();
+};
+
+const runWithContainer: () => void = (): void => {
+  const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
+  containerEngine.start();
+};
+
+runInBrowserEnvironment();
