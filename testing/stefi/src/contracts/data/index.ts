@@ -1,1 +1,1 @@
-export * from './iwork-database';
+export * from './global-database';

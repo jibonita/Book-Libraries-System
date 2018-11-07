@@ -6,11 +6,14 @@ import {
   ICommandFactory
 } from '../../contracts';
 
-@injectable()
+//@injectable()
 export class ContainerCommandFactory implements ICommandFactory {
   private readonly _commandFactoryActivator: (commandName: string) => ICommand;
 
-  public constructor(@inject(TYPES.containerCommandFactory) commandFactoryActivator: interfaces.Factory<ICommand>) {
+  // public constructor(@inject(TYPES.containerCommandFactory) commandFactoryActivator: interfaces.Factory<ICommand>) {
+  //   this._commandFactoryActivator = <(commandName: string) => ICommand>commandFactoryActivator;
+  // }
+  public constructor(commandFactoryActivator: interfaces.Factory<ICommand>) {
     this._commandFactoryActivator = <(commandName: string) => ICommand>commandFactoryActivator;
   }
 
@@ -20,7 +23,7 @@ export class ContainerCommandFactory implements ICommandFactory {
     try {
       return this._commandFactoryActivator(lowerCaseCommandName);
     } catch {
-      throw new Error(Constants.getInvalidCommandErrorMessage(commandName));
+      throw new Error(''); //(Constants.getInvalidCommandErrorMessage(commandName));
     }
   }
 }

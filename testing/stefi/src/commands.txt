@@ -1,0 +1,2 @@
+AddUser Pesho pass
+AddLibrary gosho NovoLib sofia

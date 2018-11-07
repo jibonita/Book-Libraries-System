@@ -1,9 +1,10 @@
 import { Book } from "./book";
 import { User } from "./user";
+import { IBook } from "../contracts";
 export class BookTracker {
     
 
-    constructor(private book: Book) {
+    constructor(private _book: IBook) {
    
            // set this._....
    }
@@ -15,5 +16,9 @@ export class BookTracker {
    
 //            // set this._....
 //    }
+
+    public get book(): IBook{
+        return this._book;
+    }
 
 }

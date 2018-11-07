@@ -6,3 +6,5 @@
 6. Modified commands/library-manager/add-book-to-library.ts
 
 There is conflict with the type of the library - Library or ILibrary
+
+\src\contracts\engine\factories\models-factory.ts

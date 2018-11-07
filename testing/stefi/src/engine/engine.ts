@@ -2,17 +2,18 @@ import { inject, injectable } from 'inversify';
 import { TYPES } from '../common/types';
 import { ICommandProcessor, IEngine, IReader, IWriter } from '../contracts';
 
-@injectable()
+//@injectable()
 export class Engine implements IEngine {
   private readonly _reader: IReader;
   private readonly _writer: IWriter;
   private readonly _commandProcessor: ICommandProcessor;
 
-  public constructor(
-    @inject(TYPES.commandProcessor)  commandProcessor: ICommandProcessor,
-    @inject(TYPES.reader) reader: IReader,
-    @inject(TYPES.writer) writer: IWriter
-  ) {
+  // public constructor(
+  //   @inject(TYPES.commandProcessor)  commandProcessor: ICommandProcessor,
+  //   @inject(TYPES.reader) reader: IReader,
+  //   @inject(TYPES.writer) writer: IWriter
+  // ) {
+  public constructor(commandProcessor: ICommandProcessor, reader: IReader, writer: IWriter ) {
     this._commandProcessor = commandProcessor;
     this._reader = reader;
     this._writer = writer;
@@ -20,6 +21,7 @@ export class Engine implements IEngine {
 
   public async start(): Promise<void> {
     const commands: string[] = await this._reader.read();
+    //const commands: string[] = ['AddUser Pesho pass'];
 
     const commandResults: string[] = commands.map((command: string) => {
       try {

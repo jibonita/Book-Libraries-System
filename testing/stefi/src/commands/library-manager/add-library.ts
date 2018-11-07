@@ -1,35 +1,39 @@
-import { ICommand, IModelsFactory } from "../../contracts";
-import { Owner, Library } from "../../models";
-import { IWorkDatabase } from "../../contracts/data/iwork-database";
-import { ILibrary } from "../../contracts/models";
+import { ICommand, IModelsFactory, IGlobalDatabase } from "../../contracts";
+import { ILibrary, IUser } from "../../contracts/models";
+import { Constants } from "../../common/constants";
+import { Owner } from "../../models";
 
 export class AddLibrary implements ICommand {
-    private readonly _data: IWorkDatabase;
+    private readonly _data: IGlobalDatabase;
     private readonly _factory: IModelsFactory;
   
     //public constructor(@inject(TYPES.modelsFactory) factory: IModelsFactory) {
-    public constructor( data: IWorkDatabase, factory: IModelsFactory) {
+    public constructor( data: IGlobalDatabase, factory: IModelsFactory) {
       this._data = data;
-     this._factory = factory;
+      this._factory = factory;
     }
   
     // command: AddLibrary owner name address
     public execute(parameters: string[]): string {
-      const [ownerId, name, address] = parameters;
-  
-      const owner: Owner = this._data.owners[+ownerId];
+      const [ownerNameId, name, address] = parameters;
+
+      this._data.ownerDatabase.push(new Owner('gosho', 'psd', 'plovdiv'));
       
-      // Will we check if library with such name exists?? 
-      // libraries db or enum?
-      // if (library With this name exists) {
-      //   throw new Error(Constants.getLibaryExistsErrorMessage(name));
-      // }
+      const foundOwner: IUser | undefined = this._data.ownerDatabase.find((owner:IUser) => owner.name === ownerNameId);
       
+      if (!foundOwner) {
+        throw new Error(Constants.getOwnerNotFoundErrorMessage(ownerNameId));
+      }
+
+      const foundLibrary: ILibrary | undefined = this._data.libraryDatabase.find((library: ILibrary) => library.name === name);
+      if (foundLibrary) {
+        throw new Error(Constants.getOwnerNotFoundErrorMessage(ownerNameId));
+      }
+          
+      const library: ILibrary = this._factory.addLibrary(foundOwner, name, address);
+      
+      this._data.libraryDatabase.push(library);
   
-      const library: ILibrary = this._factory.addLibrary(owner, name, address);
-      //push library to libraries db??;
-      this._data.libraries.push(library);
-  
-      return ''; // Constants.getTableCreatedSuccessMessage(model);
+      return Constants.getLibraryCreatedSuccessMessage(name);
     }
   }
