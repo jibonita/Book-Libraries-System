@@ -3,7 +3,7 @@ import { Libraries, BookGenre, UserType } from '../../enums';
 import { IBook, ILibrary, IUser, IModelsFactory } from './../../contracts';
 import { User , Library, Book } from '../../models';
 
-// @injectable()
+@injectable()
 export class ModelsFactory implements IModelsFactory {
   public addUser(name: string, password: string): IUser {
     return new User(name, password);

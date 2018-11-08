@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 export const TYPES: any = {
-    furnitureDatabase: Symbol.for('furnitureDatabase'),
+    globalDatabase: Symbol.for('globalDatabase'),
     modelsFactory: Symbol.for('modelsFactory'),
     commandFactory: Symbol.for('commandFactory'),
     commandProcessor: Symbol.for('commandProcessor'),
@@ -9,13 +9,13 @@ export const TYPES: any = {
     writer: Symbol.for('writer'),
     engine: Symbol.for('engine'),
 
-    createchair: Symbol.for('createchair'),
-    createcompany: Symbol.for('createcompany'),
-    createtable: Symbol.for('createtable'),
-    addfurnituretocompany: Symbol.for('addfurnituretocompany'),
-    findfurniturefromcompany: Symbol.for('findfurniturefromcompany'),
-    removefurniturefromcompany: Symbol.for('removefurniturefromcompany'),
-    showcompanycatalog: Symbol.for('showcompanycatalog'),
+    // createchair: Symbol.for('createchair'),
+    // createcompany: Symbol.for('createcompany'),
+    // createtable: Symbol.for('createtable'),
+    // addfurnituretocompany: Symbol.for('addfurnituretocompany'),
+    // findfurniturefromcompany: Symbol.for('findfurniturefromcompany'),
+    // removefurniturefromcompany: Symbol.for('removefurniturefromcompany'),
+    // showcompanycatalog: Symbol.for('showcompanycatalog'),
 
     containerCommandFactory: Symbol.for('containerCommandFactory')
 };

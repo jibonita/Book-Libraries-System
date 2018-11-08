@@ -4,16 +4,16 @@ import { join } from 'path';
 import { TYPES } from '../../common/types';
 import { IDataFormatter, IReader } from '../../contracts/';
 
-//@injectable()
+@injectable()
 export class FileReader implements IReader {
   private readonly _dataFormatter: IDataFormatter;
 
-  // public constructor(@inject(TYPES.dataFormatter) dataFormatter: IDataFormatter) {
-  //   this._dataFormatter = dataFormatter;
-  // }
-  public constructor(dataFormatter: IDataFormatter) {
+  public constructor(@inject(TYPES.dataFormatter) dataFormatter: IDataFormatter) {
     this._dataFormatter = dataFormatter;
   }
+  // public constructor(dataFormatter: IDataFormatter) {
+  //   this._dataFormatter = dataFormatter;
+  // }
 
   public async read(): Promise<string[]> {
     return new Promise((resolve: (res: string[]) => void, reject: (res: Error) => void): void => {

@@ -1,12 +1,13 @@
 import { injectable } from 'inversify';
 import { IGlobalDatabase, IUser, ILibrary, IBook } from '../contracts';
 
-//@injectable()
+@injectable()
 export class GlobalDatabase implements IGlobalDatabase {
   private readonly _users: IUser[];
   private readonly _libraries: ILibrary[];
   private readonly _books: IBook[];
   private readonly _owners: IUser[];
+  
   public constructor() {
     this._users = [];
     this._libraries = [];

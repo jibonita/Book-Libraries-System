@@ -6,16 +6,16 @@ import {
   ICommandFactory
 } from '../../contracts';
 
-//@injectable()
+@injectable()
 export class ContainerCommandFactory implements ICommandFactory {
   private readonly _commandFactoryActivator: (commandName: string) => ICommand;
 
-  // public constructor(@inject(TYPES.containerCommandFactory) commandFactoryActivator: interfaces.Factory<ICommand>) {
-  //   this._commandFactoryActivator = <(commandName: string) => ICommand>commandFactoryActivator;
-  // }
-  public constructor(commandFactoryActivator: interfaces.Factory<ICommand>) {
+  public constructor(@inject(TYPES.containerCommandFactory) commandFactoryActivator: interfaces.Factory<ICommand>) {
     this._commandFactoryActivator = <(commandName: string) => ICommand>commandFactoryActivator;
   }
+  // public constructor(commandFactoryActivator: interfaces.Factory<ICommand>) {
+  //   this._commandFactoryActivator = <(commandName: string) => ICommand>commandFactoryActivator;
+  // }
 
   public getCommand(commandName: string): ICommand {
     const lowerCaseCommandName: string = commandName.toLowerCase();

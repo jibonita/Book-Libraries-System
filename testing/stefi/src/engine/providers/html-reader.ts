@@ -2,16 +2,16 @@ import { inject, injectable } from 'inversify';
 import { TYPES } from '../../common/types';
 import { IDataFormatter, IReader } from '../../contracts';
 
-//@injectable()
+@injectable()
 export class HtmlReader implements IReader {
   private readonly _dataFormatter: IDataFormatter;
 
-  // public constructor(@inject(TYPES.dataFormatter) dataFormatter: IDataFormatter) {
-  //   this._dataFormatter = dataFormatter;
-  // }
-  public constructor(dataFormatter: IDataFormatter) {
+  public constructor(@inject(TYPES.dataFormatter) dataFormatter: IDataFormatter) {
     this._dataFormatter = dataFormatter;
   }
+  // public constructor(dataFormatter: IDataFormatter) {
+  //   this._dataFormatter = dataFormatter;
+  // }
 
   public async read(): Promise<string[]> {
     const containerElement: HTMLInputElement = <HTMLInputElement>(document.getElementById('input'));

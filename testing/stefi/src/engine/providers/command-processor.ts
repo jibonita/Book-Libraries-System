@@ -2,16 +2,16 @@ import { inject, injectable } from 'inversify';
 import { TYPES } from '../../common/types';
 import { ICommand, ICommandFactory, ICommandProcessor } from '../../contracts';
 
-//@injectable()
+@injectable()
 export class CommandProcessor implements ICommandProcessor {
   private _commandFactory: ICommandFactory;
 
-  // constructor(@inject(TYPES.commandFactory) commandFactory: ICommandFactory) {
-  //   this._commandFactory = commandFactory;
-  // }
-  constructor(commandFactory: ICommandFactory) {
+  constructor(@inject(TYPES.commandFactory) commandFactory: ICommandFactory) {
     this._commandFactory = commandFactory;
   }
+  // constructor(commandFactory: ICommandFactory) {
+  //   this._commandFactory = commandFactory;
+  // }
 
   public processCommand(commandAsString: string): string {
     const command: ICommand = this.parseCommand(commandAsString);

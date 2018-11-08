@@ -1,12 +1,15 @@
 import { IGlobalDatabase, ICommand, IModelsFactory, IUser } from "../../contracts";
 import { Constants } from "../../common/constants";
+import { injectable, inject } from "inversify";
+import { TYPES } from "../../common/types";
 
+@injectable()
 export class AddUser implements ICommand {
     private readonly _data: IGlobalDatabase;
     private readonly _factory: IModelsFactory;
   
-    //public constructor(@inject(TYPES.furnitureDatabase) data: IFuritureDatabase, @inject(TYPES.modelsFactory) factory: IModelsFactory) {
-    public constructor(data: IGlobalDatabase, factory: IModelsFactory) {
+    public constructor(@inject(TYPES.globalDatabase) data: IGlobalDatabase, @inject(TYPES.modelsFactory) factory: IModelsFactory) {
+    //public constructor(data: IGlobalDatabase, factory: IModelsFactory) {
       this._data = data;
       this._factory = factory;
     }

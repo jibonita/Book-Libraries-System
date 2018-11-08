@@ -1,24 +1,16 @@
 // tslint:disable
 import { Container, interfaces } from 'inversify';
-import {
-    AddFurnitureToCompany,
-    CreateChair,
-    CreateCompany,
-    CreateTable,
-    FindFurnitureFromCompany,
-    RemoveFurnitureFromCompany,
-    ShowCompanyCatalog
-} from '../commands';
+
 import {
     ICommand,
     ICommandFactory,
     ICommandProcessor,
     IDataFormatter,
     IEngine,
-    IFuritureDatabase,
     IModelsFactory,
     IReader,
-    IWriter
+    IWriter,
+    IGlobalDatabase
 } from '../contracts';
 import {
     CommandFactory,
@@ -31,9 +23,11 @@ import {
     ModelsFactory
 } from '../engine';
 import { TYPES } from './types';
+import { GlobalDatabase } from '../data';
 
 const container: Container = new Container();
 
+container.bind<IGlobalDatabase>(TYPES.globalDatabase).to(GlobalDatabase).inSingletonScope();
 container.bind<IModelsFactory>(TYPES.modelsFactory).to(ModelsFactory);
 container.bind<ICommandProcessor>(TYPES.commandProcessor).to(CommandProcessor);
 container.bind<IDataFormatter>(TYPES.dataFormatter).to(DataFormatter);
@@ -41,13 +35,6 @@ container.bind<IEngine>(TYPES.engine).to(Engine);
 container.bind<IReader>(TYPES.reader).to(FileReader); // Change here if you need html reader
 container.bind<IWriter>(TYPES.writer).to(ConsoleWriter); // Change here if you need html writer
 
-container.bind<ICommand>(TYPES.createchair).to(CreateChair);
-container.bind<ICommand>(TYPES.createcompany).to(CreateCompany);
-container.bind<ICommand>(TYPES.createtable).to(CreateTable);
-container.bind<ICommand>(TYPES.addfurnituretocompany).to(AddFurnitureToCompany);
-container.bind<ICommand>(TYPES.findfurniturefromcompany).to(FindFurnitureFromCompany);
-container.bind<ICommand>(TYPES.removefurniturefromcompany).to(RemoveFurnitureFromCompany);
-container.bind<ICommand>(TYPES.showcompanycatalog).to(ShowCompanyCatalog);
 
 // the binding so the container command factory can work - dont touch :)
 container

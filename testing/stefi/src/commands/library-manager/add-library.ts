@@ -2,13 +2,18 @@ import { ICommand, IModelsFactory, IGlobalDatabase } from "../../contracts";
 import { ILibrary, IUser } from "../../contracts/models";
 import { Constants } from "../../common/constants";
 import { Owner } from "../../models";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../../common/types";
 
+@injectable()
 export class AddLibrary implements ICommand {
     private readonly _data: IGlobalDatabase;
     private readonly _factory: IModelsFactory;
   
-    //public constructor(@inject(TYPES.modelsFactory) factory: IModelsFactory) {
-    public constructor( data: IGlobalDatabase, factory: IModelsFactory) {
+    public constructor(
+        @inject(TYPES.globalDatabase) data: IGlobalDatabase, 
+        @inject(TYPES.modelsFactory) factory: IModelsFactory) {
+   // public constructor( data: IGlobalDatabase, factory: IModelsFactory) {
       this._data = data;
       this._factory = factory;
     }

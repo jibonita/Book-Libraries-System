@@ -7,15 +7,16 @@ import {
   IGlobalDatabase,
 } from '../../contracts';
 import { Constants } from './../../common/constants';
+import { TYPES } from '../../common/types';
 
-//@injectable()
+@injectable()
 export class CommandFactory implements ICommandFactory {
   private readonly _data: IGlobalDatabase;
   private readonly _modelsFactory: IModelsFactory;
   private readonly _commands: Map<string, new (data: IGlobalDatabase, factory: IModelsFactory) => ICommand>;
   
-  //public constructor(@inject(TYPES.furnitureDatabase) data: IFuritureDatabase, @inject(TYPES.modelsFactory) modelsFactory: IModelsFactory) {
-  public constructor(data: IGlobalDatabase, modelsFactory: IModelsFactory) {
+  public constructor(@inject(TYPES.globalDatabase) data: IGlobalDatabase, @inject(TYPES.modelsFactory) modelsFactory: IModelsFactory) {
+  //public constructor(data: IGlobalDatabase, modelsFactory: IModelsFactory) {
     this._data = data;
     this._modelsFactory = modelsFactory;
 

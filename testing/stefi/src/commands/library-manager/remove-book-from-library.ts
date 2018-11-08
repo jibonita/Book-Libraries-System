@@ -2,13 +2,15 @@ import { ICommand,  IGlobalDatabase } from "../../contracts";
 import { ILibrary,  IBook } from "../../contracts/models";
 import { Constants } from "../../common/constants";
 import { BookTracker } from "../../models";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../../common/types";
 
-//@injectable()
+@injectable()
 export class RemoveBookFromLibrary implements ICommand {
   private readonly _data: IGlobalDatabase;
 
-  //public constructor(@inject(TYPES.furnitureDatabase) data: IGlobalDatabase) {
-    public constructor(data: IGlobalDatabase) {
+  public constructor(@inject(TYPES.globalDatabase) data: IGlobalDatabase) {
+  //  public constructor(data: IGlobalDatabase) {
       this._data = data;
     }
 
