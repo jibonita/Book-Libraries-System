@@ -37,7 +37,7 @@ export class CommandFactory implements ICommandFactory {
 
     const command: (new (data: IGlobalDatabase, factory: IModelsFactory) => ICommand) | undefined = this._commands.get(lowerCaseCommandName);
     if (!command) {
-      throw new Error('Erroro');//Constants.getInvalidCommandErrorMessage(commandName));
+      throw new Error(Constants.getInvalidCommandErrorMessage(commandName));
     }
 
     return new command(this._data, this._modelsFactory);

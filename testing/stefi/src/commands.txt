@@ -1,2 +1,10 @@
 AddUser Pesho pass
+AddUser gosho psd
+AddOwner gosho plovdiv    
 AddLibrary gosho NovoLib sofia
+//AddLibrary gosho NovoLib2 sofia
+AddBookToLibrary NovoLib Sherlock
+AddBookToLibrary NovoLib UncleTom
+AddBookToLibrary NovoLib PutuvaneKumSebesi
+ListTakenBooks NovoLib
+RemoveBookFromLibrary NovoLib Sherlock

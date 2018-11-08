@@ -8,13 +8,16 @@ export class Constants {
   // public static getCompanyCreatedSuccessMessage(companyName: string): string {
   //   return `Company ${companyName} created`;
   // }
-  public static getLibraryCreatedSuccessMessage(libraryName: string): string {
-    return `Library ${libraryName} created`;
+  public static getLibraryCreatedSuccessMessage(libraryName: string, ownerName: string): string {
+    return `Library ${libraryName} with owner ${ownerName} created`;
   }
 
   public static getUserCreatedSuccessMessage(userName: string): string {
       return `User ${userName} created`;
   }
+  public static getOwnerCreatedSuccessMessage(name: string): string {
+    return `Owner ${name} created`;
+}
 
   public static getBookAddedToLibrarySuccessMessage(bookName: string, libraryName: string|Libraries): string {
     return `Book ${bookName} added to library ${libraryName}`;
@@ -25,17 +28,17 @@ export class Constants {
   }
 
   // error messages
-  // public static getInvalidCommandErrorMessage(commandName: string): string {
-  //   return `Invalid command name: ${commandName}`;
-  // }
+  public static getInvalidCommandErrorMessage(commandName: string): string {
+    return `Invalid command name: ${commandName}`;
+  }
 
-  // public static getFurnitureExistsErrorMessage(furnitureModel: string): string {
-  //   return `Furniture ${furnitureModel} already exists`;
-  // }
+  public static getUserNotExistErrorMessage(username: string): string {
+    return `User ${username} does not exist`;
+  }
 
-  // public static getCompanyExistsErrorMessage(companyName: string): string {
-  //   return `Company ${companyName} already exists`;
-  // }
+  public static getUserExistsErrorMessage(username: string): string {
+    return `User ${username} already exists`;
+  }
 
   public static getBookNotFoundErrorMessage(bookId: string): string {
     return `Book ${bookId} not found`;
@@ -47,5 +50,8 @@ export class Constants {
 
   public static getLibraryNotFoundErrorMessage(libraryName: string): string {
     return `Library ${libraryName} not found`;
+  }
+  public static getLibraryExistsErrorMessage(libraryName: string): string {
+    return `Library ${libraryName} already exists.`;
   }
 }

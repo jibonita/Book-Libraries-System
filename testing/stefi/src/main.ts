@@ -28,15 +28,18 @@ console.log("type");
 
 //runInLocalEnvironment();
 
-// const runInBrowserEnvironment: () => void = (): void => {
-//   const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
-//   const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
-//   runButton.addEventListener('click', () => engine.start());
-// };
+const runInBrowserEnvironment: () => void = (): void => {
+  const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
+  //const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
+  //const engine: IEngine = container.get<IEngine>(TYPES.engine);
+  //runButton.addEventListener('click', () => engine.start());
+};
 
-const runWithContainer: () => void = (): void => {
+const runInLocalEnvironment: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
   containerEngine.start();
 };
 
-runWithContainer();
+runInLocalEnvironment();
+
+// runInBrowserEnvironment();

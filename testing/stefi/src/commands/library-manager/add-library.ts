@@ -18,27 +18,26 @@ export class AddLibrary implements ICommand {
       this._factory = factory;
     }
   
-    // command: AddLibrary owner name address
+    // command: AddLibrary ownerName name address
     public execute(parameters: string[]): string {
-      const [ownerNameId, name, address] = parameters;
+      const [ownerName, name, address] = parameters;
 
-      this._data.ownerDatabase.push(new Owner('gosho', 'psd', 'plovdiv'));
-      
-      const foundOwner: IUser | undefined = this._data.ownerDatabase.find((owner:IUser) => owner.name === ownerNameId);
-      
+      const foundOwner: IUser | undefined = this._data.ownerDatabase.find((owner:IUser) => owner.name === ownerName);
       if (!foundOwner) {
-        throw new Error(Constants.getOwnerNotFoundErrorMessage(ownerNameId));
+        throw new Error(Constants.getOwnerNotFoundErrorMessage(ownerName));
       }
 
       const foundLibrary: ILibrary | undefined = this._data.libraryDatabase.find((library: ILibrary) => library.name === name);
       if (foundLibrary) {
-        throw new Error(Constants.getOwnerNotFoundErrorMessage(ownerNameId));
+        throw new Error(Constants.getLibraryExistsErrorMessage(name));
       }
+      
+      // TODO: Check if this owner already has a library
           
       const library: ILibrary = this._factory.addLibrary(foundOwner, name, address);
       
       this._data.libraryDatabase.push(library);
   
-      return Constants.getLibraryCreatedSuccessMessage(name);
+      return Constants.getLibraryCreatedSuccessMessage(name, ownerName);
     }
   }

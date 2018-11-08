@@ -14,6 +14,7 @@ export class HtmlReader implements IReader {
   // }
 
   public async read(): Promise<string[]> {
+    
     const containerElement: HTMLInputElement = <HTMLInputElement>(document.getElementById('input'));
 
     if (containerElement) {
