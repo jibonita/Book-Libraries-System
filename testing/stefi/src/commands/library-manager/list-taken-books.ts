@@ -27,9 +27,9 @@ export class ListTakenBooks implements ICommand {
     }
           
     const libraryTakenBooksList: string = foundLibrary.bookList
-        .filter((bookTrack: BookTracker) => bookTrack.book.availability === false)
+        .filter((bookTrack: BookTracker) => bookTrack.availability === false)
         .map((book: BookTracker)  => book.book.title.toString())
-        .join('\n');
+        .join('\n') || 'No Borrowed books';
 
   
       return libraryTakenBooksList;

@@ -8,6 +8,8 @@ export interface IModelsFactory {
 
   addBook(title: string, author: string, genre: BookGenre): IBook;
 
+  addBookTracker(book: IBook, user: IUser, checkoutDate: string): BookTracker;
+
   addLibrary(owner: IUser, name: (Libraries| string), address: string): ILibrary;
 }
 

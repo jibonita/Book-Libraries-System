@@ -1,7 +1,6 @@
 import { ICommand, IModelsFactory, IGlobalDatabase } from "../../contracts";
 import { ILibrary, IUser } from "../../contracts/models";
 import { Constants } from "../../common/constants";
-import { Owner } from "../../models";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../../common/types";
 

@@ -1,10 +1,22 @@
+
 AddUser Pesho pass
 AddUser gosho psd
 AddOwner gosho plovdiv    
 AddLibrary gosho NovoLib sofia
 //AddLibrary gosho NovoLib2 sofia
+
+AddBook Putuvane-Kum-Sebe-si author novel
+AddBook Sherlock avtor stories
+AddBook UncleTom Hariet novel
+AddBook Putuvane-Kum-Sebe-si Blaga novel
+
 AddBookToLibrary NovoLib Sherlock
-AddBookToLibrary NovoLib UncleTom
-AddBookToLibrary NovoLib PutuvaneKumSebesi
+AddBookToLibrary NovoLib UncleTomas
+AddBookToLibrary NovoLib Putuvane-Kum-Sebe-si
 ListTakenBooks NovoLib
-RemoveBookFromLibrary NovoLib Sherlock
+//RemoveBookFromLibrary NovoLib Sherlock
+
+BorrowBook NovoLib Pesho Sherlock
+
+
+

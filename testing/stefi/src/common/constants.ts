@@ -4,10 +4,10 @@ import { Libraries } from "../enums";
 export class Constants {
   // success messages
 
-
-  // public static getCompanyCreatedSuccessMessage(companyName: string): string {
-  //   return `Company ${companyName} created`;
-  // }
+  public static getBookCreatedSuccessMessage(bookTitle: string): string {
+    return `Book ${bookTitle} created`;
+  }
+  
   public static getLibraryCreatedSuccessMessage(libraryName: string, ownerName: string): string {
     return `Library ${libraryName} with owner ${ownerName} created`;
   }
@@ -28,8 +28,12 @@ export class Constants {
   }
 
   // error messages
-  public static getInvalidCommandErrorMessage(commandName: string): string {
+    public static getInvalidCommandErrorMessage(commandName: string): string {
     return `Invalid command name: ${commandName}`;
+  }
+
+  public static getGenreNotExistErrorMessage(genre: string): string {
+    return `Genre ${genre} does not exist`;
   }
 
   public static getUserNotExistErrorMessage(username: string): string {
@@ -53,5 +57,9 @@ export class Constants {
   }
   public static getLibraryExistsErrorMessage(libraryName: string): string {
     return `Library ${libraryName} already exists.`;
+  }
+
+  public static getBorrowedBookSuccessMessage(book: string, user: string): string {
+    return `Book ${book} was borrowed by ${user}.`;
   }
 }
