@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './public/src/main.ts',
+  entry: './testing/stefi/src/main.ts',
   module: {
     rules: [{
       test: /\.(ts|js)x?$/,
@@ -10,9 +10,17 @@ module.exports = {
     }]
   },
   devtool: 'inline-source-map',
+  devServer: {
+    host: 'localhost',
+    publicPath: 'testing/stefi/dist/',
+    contentBase: path.resolve(__dirname, "./"),
+    watchContentBase: true,
+    compress: true,
+    port: 9001
+  },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public/dist')
+    path: path.resolve(__dirname, 'testing/stefi/dist')
   },
   
 
