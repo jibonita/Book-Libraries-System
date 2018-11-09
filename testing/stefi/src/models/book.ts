@@ -6,7 +6,7 @@ export class Book implements IBook {
 constructor(private _title: string,
      private _author: string,
       private _genre: BookGenre,
-       private _availability: boolean) {
+       ) {
 
         // set this._....
 }
@@ -20,9 +20,7 @@ public get author(): string{
 public get genre(): BookGenre{
     return this._genre;
 };
-public get availability(): boolean{
-    return this._availability;
-};
+
 
 
 

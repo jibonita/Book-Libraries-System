@@ -3,7 +3,7 @@ export interface IBook {
   title: string;
   author: string;
   genre:BookGenre;
-  availability: boolean;
+  //availability: boolean;
  // If partOfSeries is true we need to implement ISeries
 
 
