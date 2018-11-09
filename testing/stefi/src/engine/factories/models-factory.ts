@@ -13,8 +13,8 @@ export class ModelsFactory implements IModelsFactory {
     return new Owner(user.name, user.password, address);
   }
 
-  public addBook(title: string, author: string, genre: BookGenre, availability: boolean): IBook {
-    return new Book(title, author, genre, availability);
+  public addBook(title: string, author: string, genre: BookGenre): IBook {
+    return new Book(title, author, genre);
   }
 
   public addLibrary(owner: IUser, name: (Libraries| string), address: string): ILibrary {

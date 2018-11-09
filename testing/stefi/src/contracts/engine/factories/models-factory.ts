@@ -6,7 +6,7 @@ export interface IModelsFactory {
   
   addOwner(user: IUser, address: string): IUser;
 
-  addBook(title: string, author: string, genre: BookGenre, availability: boolean): IBook;
+  addBook(title: string, author: string, genre: BookGenre): IBook;
 
   addLibrary(owner: IUser, name: (Libraries| string), address: string): ILibrary;
 }
