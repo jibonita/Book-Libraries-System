@@ -33,7 +33,7 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "start": "ts-node --project tsconfig.json ./testing/stefi/src/main.ts",
+    "start": "ts-node --project tsconfig.json ./src/main.ts",
     "start-w": "webpack-dev-server --inline --progress --colors --open",
     "exec": "ts-node --project tsconfig.json",
     "build": "npm run clean & tsc --project .",
