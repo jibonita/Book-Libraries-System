@@ -14,22 +14,22 @@ export class RemoveBookFromLibrary implements ICommand {
       this._data = data;
     }
 
-    // RemoveBook libraryName bookName
+    // RemoveBook libraryName BookId
   public execute(parameters: string[]): string {
-    const [libraryName, bookName] = parameters;
+    const [libraryName, bookId] = parameters;
 
     const foundLibrary: ILibrary | undefined = this._data.libraryDatabase.find((library: ILibrary) => library.name === libraryName);
         if (!foundLibrary) {
             throw new Error(Constants.getLibraryNotFoundErrorMessage(libraryName));
         }
 
-    const foundBookIndex: number = foundLibrary.bookList.findIndex((bookTrack: BookTracker) => bookTrack.book.title === bookName);
+    const foundBookIndex: number = foundLibrary.bookList.findIndex((bookTrack: BookTracker) => bookTrack.book.id === +bookId);
     if (foundBookIndex === -1) {
-      throw new Error(Constants.getBookNotFoundErrorMessage(bookName));
+      throw new Error(Constants.getBookNotFoundErrorMessage(+bookId));
     }
     
     foundLibrary.bookList.splice(foundBookIndex, 1);
 
-    return Constants.getBookRemovedSuccessMessage(bookName, libraryName);
+    return Constants.getBookRemovedSuccessMessage(bookId, libraryName);
   }
 }

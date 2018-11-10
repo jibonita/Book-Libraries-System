@@ -23,8 +23,8 @@ export class Constants {
     return `Book ${bookName} added to library ${libraryName}`;
   }
 
-  public static getBookRemovedSuccessMessage(bookName: string, libraryId: string): string {
-    return `Book ${bookName} removed from library ${libraryId}`;
+  public static getBookRemovedSuccessMessage(bookId: string, libraryId: string): string {
+    return `Book removed from library ${libraryId}`;
   }
 
   // error messages
@@ -61,5 +61,9 @@ export class Constants {
 
   public static getBorrowedBookSuccessMessage(book: string, user: string): string {
     return `Book ${book} was borrowed by ${user}.`;
+  }
+
+   public static getReturnedBookSuccessMessage(book: string, user: string): string {
+    return `Book ${book} was returned by ${user}.`;
   }
 }
