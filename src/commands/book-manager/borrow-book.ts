@@ -40,22 +40,25 @@ export class BorrowBook implements ICommand {
         //     throw new Error(Constants.getBookNotFoundErrorMessage(+bookId));
         // }
         
+        let resultMsg: string = '';
         if (foundLibrary) {
             const foundBook: BookTracker | undefined = Search.findBookInLibrary(foundLibrary, +bookId);
             if (foundBook && foundUser) {
                 this.updateFieldsStatus(foundBook, foundUser);
 
-                return Constants.getBorrowedBookSuccessMessage(foundBook.book.title, username);
+                if (foundBook.currentUser !== null ) {
+                    resultMsg =  Constants.getBorrowedBookSuccessMessage(foundBook.book.title, foundBook.currentUser.name);
+                }
             }
         }
          
-        return 'stef';//Constants.getBorrowedBookSuccessMessage(foundBook.book.title, username);
+        return resultMsg;//Constants.getBorrowedBookSuccessMessage(foundBook.book.title, username);
     }
 
     private updateFieldsStatus(book: BookTracker, user: IUser){
         const updater: UpdateFields = new UpdateFields(book, user);
-        updater.updateBookAvailability();
         updater.updateUserList();
+        updater.updateBookAvailability();
     }
       
   }

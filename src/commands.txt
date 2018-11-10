@@ -20,7 +20,7 @@ RemoveBookFromLibrary NovoLib 4
 BorrowBook NovoLib Pesho 2
 ListTakenBooks NovoLib
 ReturnBook Pesho 2
-ReturnBook Pesho 3
+ReturnBook Pesho 2
 
 
 

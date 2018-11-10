@@ -9,10 +9,24 @@ export class UpdateFields {
   } 
 
   public updateUserList(){
-    //this.user.updateLists(this.book); // method in User class, update takenBooks and bookHistory arrays
-    
+    if(this.book.availability){
+        //this.user.updateLists(this.book); 
+        this.user.borrowedBooks.push(this.book);
+    } else {
+        //this.user.updateLists(this.book, false); 
+
+        const bookIndex = this.user.borrowedBooks.findIndex((tracked:BookTracker) =>
+            tracked.book.id === this.book.book.id);
+        this.user.borrowedBooks.splice(bookIndex,1);
+        this.user.booksHistory.push(this.book);
+    }
 }
   public updateBookAvailability(){
-      this.book.borrow(this.user);
+      if(this.book.availability){
+        this.book.borrow(this.user);
+      } else {
+        this.book.clean();
+      }
+      
   }
 }

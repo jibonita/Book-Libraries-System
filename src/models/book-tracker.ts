@@ -8,8 +8,7 @@ export class BookTracker {
     private _dateToReturn: string = ''; 
     private _availability: Boolean = true;
 
-  constructor(private _book: IBook) {
-    
+  constructor(private _book: IBook) {    
   }
 
   public get book(): IBook {
@@ -19,7 +18,15 @@ export class BookTracker {
   public get availability(): Boolean {
     return this._availability;
   }
-  public set currentUser(value: IUser){
+
+  public get currentUser(): IUser|null {
+    return this._currentUser;
+  }
+
+  public set availability(value: Boolean) {
+    this._availability = value;
+  }
+  public set currentUser(value: IUser | null){
     this._currentUser = value;
   }
   public set dateTaken(value: string){
@@ -31,11 +38,18 @@ export class BookTracker {
 
 
   public borrow(user: IUser){
-     this._availability = false;
+     this.availability = false;
      this.currentUser = user;
      
      const today = new Date();
      this.dateTaken = today.toLocaleDateString();
      this.dateToReturn = today.setDate(today.getDate() + this.borrowPeriod).toLocaleString();
+  }
+
+  public clean(){
+    this.availability = true;
+    this.currentUser = null;
+    this.dateTaken = '';
+    this.dateToReturn = '';
   }
 }

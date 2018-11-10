@@ -63,7 +63,10 @@ export class Constants {
     return `Book ${book} was borrowed by ${user}.`;
   }
 
-   public static getReturnedBookSuccessMessage(book: string, user: string): string {
+  public static getReturnedBookSuccessMessage(book: string, user: string): string {
     return `Book ${book} was returned by ${user}.`;
+  }
+  public static getBookNotInUserListErrorMessage(book: string, user: string): string {
+    return `Book ${book} is not in ${user}'s borrow list.`;
   }
 }

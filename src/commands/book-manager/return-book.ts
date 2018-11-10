@@ -25,17 +25,28 @@ export class ReturnBook implements ICommand {
         const foundBook: BookTracker | undefined = Search.findBookInGlobal(this._data, +bookId);
         
         let resultMsg: string = '';
+        
         if (foundBook && foundUser) {
-            this.updateFieldsStatus(foundBook, foundUser);
-            resultMsg =  Constants.getReturnedBookSuccessMessage(foundBook.book.title, username);
-        }
+            if (foundBook.currentUser !== null ) {
+                if (foundBook.currentUser.name === foundUser.name) {
+                    this.updateFieldsStatus(foundBook, foundUser);
+                    resultMsg =  Constants.getReturnedBookSuccessMessage(foundBook.book.title, username);
+                }
+                else{
+                    resultMsg = Constants.getBookNotInUserListErrorMessage(foundBook.book.title, username);
+                }
+            }
+            else{
+                resultMsg = Constants.getBookNotInUserListErrorMessage(foundBook.book.title, username);
+            }
+         }
                 
         return resultMsg;
     }
 
     private updateFieldsStatus(book: BookTracker, user: IUser){
         const updater: UpdateFields = new UpdateFields(book, user);
-        updater.updateBookAvailability();
         updater.updateUserList();
+        updater.updateBookAvailability();
     }
   }
