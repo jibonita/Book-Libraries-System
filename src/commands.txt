@@ -10,13 +10,17 @@ AddBook Sherlock avtor stories
 AddBook UncleTom Hariet novel
 AddBook Putuvane-Kum-Sebe-si Blaga novel
 
-AddBookToLibrary NovoLib Sherlock
-AddBookToLibrary NovoLib UncleTomas
-AddBookToLibrary NovoLib Putuvane-Kum-Sebe-si
+AddBookToLibrary NovoLib 2
+AddBookToLibrary NovoLib 3
+AddBookToLibrary NovoLib 1
+AddBookToLibrary NovoLib 4
 ListTakenBooks NovoLib
-//RemoveBookFromLibrary NovoLib Sherlock
+RemoveBookFromLibrary NovoLib 4
 
-BorrowBook NovoLib Pesho Sherlock
+BorrowBook NovoLib Pesho 2
+ListTakenBooks NovoLib
+ReturnBook Pesho 2
+ReturnBook Pesho 3
 
 
 

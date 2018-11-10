@@ -3,7 +3,7 @@ import { TYPES } from "../../common/types";
 import { Constants } from "../../common/constants";
 import { ICommand, IModelsFactory, IGlobalDatabase, IUser } from "../../contracts";
 import { BookTracker } from "../../models";
-import { Search } from "..";
+import { Search, UpdateFields } from "..";
 
 @injectable()
 export class ReturnBook implements ICommand {
@@ -21,26 +21,20 @@ export class ReturnBook implements ICommand {
     public execute(parameters: string[]): string {
         const [username, bookId] = parameters;
 
-        // const foundUser: IUser | undefined = this._data.userDatabase.find((user:IUser) => user.name === username);
-        // if (!foundUser) {
-        // throw new Error(Constants.getUserNotExistErrorMessage(username));
-        // }
-        const foundUser = Search.findUser(this._data, username);
-
-        // currently searched by book name but have to search by ID
-        const foundBook: BookTracker | undefined  =
-             foundLibrary.bookList.find((libBook: BookTracker) => libBook.book.title === bookId);
-        if (!foundBook) {
-            throw new Error(Constants.getBookNotFoundErrorMessage(bookId));
+        const foundUser: IUser | undefined = Search.findUser(this._data, username);
+        const foundBook: BookTracker | undefined = Search.findBookInGlobal(this._data, +bookId);
+        
+        let resultMsg: string = '';
+        if (foundBook && foundUser) {
+            this.updateFieldsStatus(foundBook, foundUser);
+            resultMsg =  Constants.getReturnedBookSuccessMessage(foundBook.book.title, username);
         }
-        
-        this.updateFieldsStatus(foundBook, foundUser);
-        
-        return Constants.getBorrowedBookSuccessMessage(foundBook.book.title, username);
+                
+        return resultMsg;
     }
 
     private updateFieldsStatus(book: BookTracker, user: IUser){
-        const updater: UpdateList = new UpdateList(book, user);
+        const updater: UpdateFields = new UpdateFields(book, user);
         updater.updateBookAvailability();
         updater.updateUserList();
     }
