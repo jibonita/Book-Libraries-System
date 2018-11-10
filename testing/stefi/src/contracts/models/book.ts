@@ -3,5 +3,6 @@ export interface IBook {
     title: string;
     author: string;
     genre:BookGenre;
+    id: number;
 
 }
