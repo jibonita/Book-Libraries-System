@@ -22,43 +22,73 @@
       </ul>
     </div>
   </nav>
-
-    <div class="row">
-        <form class="col s12">
+  <table>
+    <tr>
+      <td>
+        <div class="col" >
+          Register
           <div class="row">
-            <div class="input-field col s6">
-                Username: 
-              <div class="input-field inline">
-                    <input placeholder="Name" id="first_name" type="text" class="validate">
-                    <label for="first_name"></label>
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                      Username: 
+                    <div class="input-field inline">
+                          <input placeholder="Name" id="user_name" type="text" class="validate" value="ime">
+                          <label for="user_name"></label>
+                        </div>
                   </div>
-            </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                      Password:
+                    <div class="input-field inline">
+                          <input placeholder="Password" id="password" type="password" class="validate" value="pass" autocomplete="user-password">
+                          <label for="password"></label>
+                        </div>
+                  </div>
+                </div>
+              </form>
           </div>
+          <a class="waves-effect waves-light btn" id="register">Register</a>
+        </div>
+      </td>
+      <td>
+        <div class="col">
+          Login
           <div class="row">
-            <div class="input-field col s12">
-                Password:
-              <div class="input-field inline">
-                    <input placeholder="Password" id="password" type="password" class="validate">
-                    <label for="password"></label>
-                  </div>
-            </div>
-          </div>
-
-          <!-- <div class="row">
-            <div class="col s12">
-              E-mail:
-              <div class="input-field inline">
-                <input id="email_inline" type="email" class="validate">
-                <label for="email_inline">Email</label>
-                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                    Username: 
+                  <div class="input-field inline">
+                        <input placeholder="Name" id="login_name" type="text" class="validate" value="ime">
+                        <label for="user_name"></label>
+                      </div>
+                </div>
               </div>
-            </div> -->
+              <div class="row">
+                <div class="input-field col s12">
+                    Password:
+                  <div class="input-field inline">
+                        <input placeholder="Password" id="login-password" type="password" class="validate" value="pass" autocomplete="user-password">
+                        <label for="password"></label>
+                      </div>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <a class="waves-effect waves-light btn">Click me!</a>
+          <a class="waves-effect waves-light btn" id="login">Login</a>
+        </div>
+  
+      </td>
+    </tr>
+  </table>
+  
+       
+        
+    
 
-      <textarea placeholder="Input here" class="form-control col-md-8 offset-2" id="input" rows="10"></textarea>
-<script src="./dist/bundle.js"></script>
+  <textarea placeholder="Result here" class="form-control col-md-8 offset-2" id="result" rows="10"></textarea>
+<script src="./dist/main.js"></script>
 </body>
 </html>
