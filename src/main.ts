@@ -5,6 +5,7 @@ import { TYPES } from "./common/types";
 import { ICommandFactory, ICommandProcessor, IDataFormatter, IReader, IWriter, IEngine, IModelsFactory, IGlobalDatabase } from "./contracts";
 import { CommandFactory, CommandProcessor, DataFormatter, FileReader, ConsoleWriter, Engine, ModelsFactory } from "./engine";
 import { GlobalDatabase } from "./data";
+import { TakeUserInput } from "./engine/DomEventHandlers";
 
 
 console.log("type");
@@ -31,15 +32,25 @@ console.log("type");
 const runInBrowserEnvironment: () => void = (): void => {
   const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
   //const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
-  //const engine: IEngine = container.get<IEngine>(TYPES.engine);
-  //runButton.addEventListener('click', () => engine.start());
+  const engine: IEngine = container.get<IEngine>(TYPES.engine);
+  runButton.addEventListener('click', () => engine.start());
 };
 
-const runInLocalEnvironment: () => void = (): void => {
+const runInContainer: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-  containerEngine.start();
+  
+  const regButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('register'));
+  regButton.addEventListener('click', (e) => {
+    TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
+    containerEngine.start();
+  });
+  const loginButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('login'));
+  loginButton.addEventListener('click', (e) => {
+    TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
+    containerEngine.start();
+  });
 };
 
-runInLocalEnvironment();
+runInContainer();
 
-// runInBrowserEnvironment();
+//runInBrowserEnvironment();

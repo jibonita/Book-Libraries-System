@@ -16,23 +16,23 @@ export class AddLibrary implements ICommand {
       this._factory = factory;
     }
   
-    // command: AddLibrary ownerName name address
+    // command: AddLibrary userName name address
     public execute(parameters: string[]): string {
-      const [ownerName, name, address] = parameters;
+      const [userName, name, address] = parameters;
 
-      const foundOwner: IUser | undefined = this._data.ownerDatabase.find((owner:IUser) => owner.name === ownerName);
-      if (!foundOwner) {
-        throw new Error(Constants.getOwnerNotFoundErrorMessage(ownerName));
+      const foundUser: IUser | undefined = this._data.userDatabase.find((user:IUser) => user.name === userName);
+      if (!foundUser) {
+        throw new Error(Constants.getOwnerNotFoundErrorMessage(userName));// update this message
       }
 
       
       
       // TODO: Check if this owner already has a library
           
-      const library: ILibrary = this._factory.addLibrary(foundOwner, name, address);
+      const library: ILibrary = this._factory.addLibrary(foundUser, name, address);
       
       this._data.libraryDatabase.push(library);
   
-      return Constants.getLibraryCreatedSuccessMessage(name, ownerName);
+      return Constants.getLibraryCreatedSuccessMessage(name, userName);
     }
   }
