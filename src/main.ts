@@ -45,7 +45,15 @@ const runInContainer: () => void = (): void => {
     containerEngine.start();
   });
   const loginButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('login'));
-  loginButton.addEventListener('click', (e) => {
+  if (loginButton) {
+    loginButton.addEventListener('click', (e) => {
+      TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
+      containerEngine.start();
+    });
+  }
+  
+  const addLibButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('create-library'));
+  addLibButton.addEventListener('click', (e) => {
     TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
     containerEngine.start();
   });

@@ -1,17 +1,14 @@
 import { inject, injectable } from 'inversify';
+import { TextModifier } from '../../common/text-modifier';
 
 //@injectable()
 export class TakeUserInput {//implements ITakeUserInput {
 
   public static actionName: string = '';
   public static takeInput(){
-    const action: string = TakeUserInput.toUpperCase(TakeUserInput.actionName);
+    const action: string = TextModifier.dashToCapitalize(TakeUserInput.actionName);
     const actionMethod: string = `take${action}UserInput`;
-    //return TakeUserInput[actionMethod]();
     return TakeUserInput.executeAction(actionMethod);
-    //return TakeUserInput['takeUserRegisterInput']();
-    //return TakeUserInput.takeUserRegisterInput();
-    //return TakeUserInput.takeUserLoginInput();
   }
   public static executeAction(action:string){
     return TakeUserInput[action]();
@@ -22,7 +19,7 @@ export class TakeUserInput {//implements ITakeUserInput {
       const password: HTMLInputElement = <HTMLInputElement>(document.getElementById('password'));
       
       if (userName.value.length === 0 || password.value.length === 0) {
-        //throw new Error(Constants.getBookNotFoundErrorMessage(bookId));
+        //throw new Error(Constants.getUserRegisterEmptyFieldErrorMessage(bookId));
         throw new Error('Error on register');
       }
       const commandText: string =  
@@ -44,9 +41,9 @@ export class TakeUserInput {//implements ITakeUserInput {
     return commandText;
 }
 
-public static takeCreatelibraryUseryInput(): string{
+public static takeCreateLibraryUserInput(): string{
     const userName: HTMLInputElement = <HTMLInputElement>(document.getElementById('user_name'));
-    const library: HTMLInputElement = <HTMLInputElement>(document.getElementById('libraryName'));
+    const library: HTMLInputElement = <HTMLInputElement>(document.getElementById('library_name'));
     const address: HTMLInputElement = <HTMLInputElement>(document.getElementById('address'));
     
     if (address.value.length === 0 || library.value.length === 0) {
@@ -60,10 +57,9 @@ public static takeCreatelibraryUseryInput(): string{
     
     return commandText;
 }
-private static toUpperCase(text: string) 
-{
-    return text.charAt(0).toUpperCase() + text.slice(1);
-}
+
+
+
 
 }
 
