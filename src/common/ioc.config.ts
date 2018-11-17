@@ -19,7 +19,6 @@ import {
     ContainerCommandFactory,
     DataFormatter,
     Engine,
-    FileReader,
     ModelsFactory,
     HtmlReader,
     HtmlWriter

@@ -5,7 +5,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.(ts|js)x?$/,
-      loader: 'babel-loader',
+      loader: 'ts-loader',
       exclude: /node_modules/
     }]
   },
@@ -19,7 +19,7 @@ module.exports = {
     port: 9001
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
   
