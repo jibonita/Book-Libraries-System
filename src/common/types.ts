@@ -8,6 +8,7 @@ export const TYPES: any = {
     reader: Symbol.for('reader'),
     writer: Symbol.for('writer'),
     engine: Symbol.for('engine'),
+    userInput: Symbol.for('userInput'),
 
     // createchair: Symbol.for('createchair'),
     // createcompany: Symbol.for('createcompany'),

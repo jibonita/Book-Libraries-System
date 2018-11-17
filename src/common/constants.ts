@@ -77,4 +77,8 @@ export class Constants {
   public static getBookNotInUserListErrorMessage(book: string, user: string): string {
     return `Book ${book} is not in ${user}'s borrow list.`;
   }
+
+  public static getUserRegisterEmptyFieldErrorMessage(): string {
+    return `Please fill both username and password fields`;
+  }
 }

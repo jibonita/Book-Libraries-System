@@ -1,14 +1,17 @@
 import { inject, injectable } from 'inversify';
 import { TextModifier } from '../../common/text-modifier';
+import { Constants } from '../../common/constants';
+import { ITakeUserInput } from '../../../dist/contracts/engine/event_handlers/take-user-input';
 
-//@injectable()
-export class TakeUserInput {//implements ITakeUserInput {
+@injectable()
+export class TakeUserInput implements ITakeUserInput{
 
   public static actionName: string = '';
-  public static takeInput(){
+  public takeInput(): string{
     const action: string = TextModifier.dashToCapitalize(TakeUserInput.actionName);
     const actionMethod: string = `take${action}UserInput`;
-    return TakeUserInput.executeAction(actionMethod);
+//    return TakeUserInput.executeAction(actionMethod);
+    return (TakeUserInput as any)[actionMethod]();
   }
   public static executeAction(action:string){
     return (TakeUserInput as any)[action]();
@@ -19,8 +22,7 @@ export class TakeUserInput {//implements ITakeUserInput {
       const password: HTMLInputElement = <HTMLInputElement>(document.getElementById('password'));
       
       if (userName.value.length === 0 || password.value.length === 0) {
-        //throw new Error(Constants.getUserRegisterEmptyFieldErrorMessage(bookId));
-        throw new Error('Error on register');
+        throw new Error(Constants.getUserRegisterEmptyFieldErrorMessage());
       }
       const commandText: string =  
         `AddUser ${userName.value} ${password.value}`;
