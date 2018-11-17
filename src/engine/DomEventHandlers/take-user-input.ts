@@ -10,12 +10,9 @@ export class TakeUserInput implements ITakeUserInput{
   public takeInput(): string{
     const action: string = TextModifier.dashToCapitalize(TakeUserInput.actionName);
     const actionMethod: string = `take${action}UserInput`;
-//    return TakeUserInput.executeAction(actionMethod);
     return (TakeUserInput as any)[actionMethod]();
   }
-  public static executeAction(action:string){
-    return (TakeUserInput as any)[action]();
-  }
+  
 
   public static takeRegisterUserInput(): string{
       const userName: HTMLInputElement = <HTMLInputElement>(document.getElementById('user_name'));
