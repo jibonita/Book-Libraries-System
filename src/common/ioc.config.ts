@@ -19,7 +19,6 @@ import {
     ContainerCommandFactory,
     DataFormatter,
     Engine,
-    FileReader,
     ModelsFactory,
     HtmlReader,
     HtmlWriter
@@ -35,11 +34,11 @@ container.bind<ICommandProcessor>(TYPES.commandProcessor).to(CommandProcessor);
 container.bind<IDataFormatter>(TYPES.dataFormatter).to(DataFormatter);
 container.bind<IEngine>(TYPES.engine).to(Engine);
 
-container.bind<IReader>(TYPES.reader).to(FileReader); // Change here if you need html reader
-container.bind<IWriter>(TYPES.writer).to(ConsoleWriter); // Change here if you need html writer
+// container.bind<IReader>(TYPES.reader).to(FileReader); // Change here if you need html reader
+// container.bind<IWriter>(TYPES.writer).to(ConsoleWriter); // Change here if you need html writer
 
-// container.bind<IReader>(TYPES.reader).to(HtmlReader); // Change here if you need html reader
-// container.bind<IWriter>(TYPES.writer).to(HtmlWriter); // Change here if you need html writer
+container.bind<IReader>(TYPES.reader).to(HtmlReader); // Change here if you need html reader
+container.bind<IWriter>(TYPES.writer).to(HtmlWriter); // Change here if you need html writer
 
 
 

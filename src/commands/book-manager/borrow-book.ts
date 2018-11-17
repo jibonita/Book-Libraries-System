@@ -26,29 +26,39 @@ export class BorrowBook implements ICommand {
         // if (!foundLibrary) {
         //     throw new Error(Constants.getLibraryNotFoundErrorMessage(libraryName));
         // }
-        const foundLibrary: ILibrary|undefined = Search.findLibrary(this._data, libraryName);
+        const foundLibrary: ILibrary | undefined = Search.findLibrary(this._data, libraryName);
       
         
-        const foundUser: IUser | undefined = this._data.userDatabase.find((user:IUser) => user.name === username);
-        if (!foundUser) {
-        throw new Error(Constants.getUserNotExistErrorMessage(username));
-        }
+        // const foundUser: IUser | undefined = this._data.userDatabase.find((user:IUser) => user.name === username);
+        // if (!foundUser) {
+        // throw new Error(Constants.getUserNotExistErrorMessage(username));
+        // }
+        const foundUser: IUser | undefined = Search.findUser(this._data, username);
 
-        // currently searched by book name but have to search by ID
-        const foundBook: BookTracker | undefined  = foundLibrary.bookList.find((libBook: BookTracker) => libBook.book.title === bookId);
-        if (!foundBook) {
-            throw new Error(Constants.getBookNotFoundErrorMessage(bookId));
-        }
-                
-        this.updateFieldsStatus(foundBook, foundUser);
+        // const foundBook: BookTracker | undefined  = foundLibrary.bookList.find((libBook: BookTracker) => libBook.book.title === bookId);
+        // if (!foundBook) {
+        //     throw new Error(Constants.getBookNotFoundErrorMessage(+bookId));
+        // }
         
-        return Constants.getBorrowedBookSuccessMessage(foundBook.book.title, username);
+        let resultMsg: string = '';
+        if (foundLibrary) {
+            const foundBook: BookTracker | undefined = Search.findBookInLibrary(foundLibrary, +bookId);
+            if (foundBook && foundUser) {
+                this.updateFieldsStatus(foundBook, foundUser);
+
+                if (foundBook.currentUser !== null ) {
+                    resultMsg =  Constants.getBorrowedBookSuccessMessage(foundBook.book.title, foundBook.currentUser.name);
+                }
+            }
+        }
+         
+        return resultMsg;//Constants.getBorrowedBookSuccessMessage(foundBook.book.title, username);
     }
 
     private updateFieldsStatus(book: BookTracker, user: IUser){
         const updater: UpdateFields = new UpdateFields(book, user);
-        updater.updateBookAvailability();
         updater.updateUserList();
+        updater.updateBookAvailability();
     }
       
   }

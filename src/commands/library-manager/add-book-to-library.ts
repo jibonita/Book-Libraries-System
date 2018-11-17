@@ -1,4 +1,3 @@
-import { BookGenre } from './../../enums/book-genre';
 import { ICommand, ILibrary, IBook, IGlobalDatabase } from "../../contracts";
 import { Library, Book, BookTracker } from '../../models';
 import { Constants } from "../../common/constants";
@@ -14,19 +13,18 @@ export class AddBookToLibrary implements ICommand {
       this._data = data;
     }
   
-    // AddBookToLibrary libraryName bookName
+    // AddBookToLibrary libraryName bookId
     public execute(parameters: string[]): string {
-        const [libraryName, bookName] = parameters;
+        const [libraryName, bookId] = parameters;
     
         const foundLibrary: ILibrary | undefined = this._data.libraryDatabase.find((library: ILibrary) => library.name === libraryName);
         if (!foundLibrary) {
             throw new Error(Constants.getLibraryNotFoundErrorMessage(libraryName));
         }
         
-        // currently searched by book name but have to search by ID
-        const foundBook: IBook | undefined = this._data.bookDatabase.find((book: IBook) => book.title === bookName);
+        const foundBook: IBook | undefined = this._data.bookDatabase.find((book: IBook) => book.id === +bookId);
         if (!foundBook) {
-            throw new Error(Constants.getBookNotFoundErrorMessage(bookName));
+            throw new Error(Constants.getBookNotFoundErrorMessage(+bookId));
         }
         const bookForLib = new BookTracker(foundBook);
         foundLibrary.bookList.push(bookForLib);
