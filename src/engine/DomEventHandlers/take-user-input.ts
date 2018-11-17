@@ -17,7 +17,6 @@ export class TakeUserInput implements ITakeUserInput {
     return this.callTakeInputAction(actionCommand);
   }
   private callTakeInputAction(actionCommand: string): string{
-   
     const command: any = Object
       .keys(commands)
       .reduce((allCommands: Map<string, new () => ITakeUserInput>, commandName: string): Map<string, new () => ITakeUserInput> => {

@@ -21,13 +21,13 @@ const runInBrowserEnvironment: () => void = (): void => {
 
 const runInContainer: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-  
+  localStorage.clear();
   // temporary will be like this
   const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
   buttonIDs.map((id)=>{
     const button: HTMLButtonElement = <HTMLButtonElement>(document.getElementById(id));
     if (button) {
-      button.addEventListener('click', (e) => {
+       button.addEventListener('click', (e) => {
         localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
         containerEngine.start();
       });

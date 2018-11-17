@@ -15,6 +15,10 @@ export class Constants {
   public static getUserCreatedSuccessMessage(userName: string): string {
       return `User ${userName} created`;
   }
+
+  public static getUserLoginSuccessMessage(userName: string): string {
+    return `User ${userName} successfully logged in`;
+}
   public static getOwnerCreatedSuccessMessage(name: string): string {
     return `Owner ${name} created`;
 }
