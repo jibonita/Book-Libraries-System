@@ -6,6 +6,7 @@ import { ICommandFactory, ICommandProcessor, IDataFormatter, IReader, IWriter, I
 import { CommandFactory, CommandProcessor, DataFormatter, ConsoleWriter, Engine, ModelsFactory } from "./engine";
 import { GlobalDatabase } from "./data";
 import { TakeUserInput } from "./engine/DomEventHandlers";
+import { Labels } from "./common/label-constants";
 
 
 console.log("type");
@@ -21,24 +22,20 @@ const runInBrowserEnvironment: () => void = (): void => {
 const runInContainer: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
   
-  const regButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('register'));
-  regButton.addEventListener('click', (e) => {
-    TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
-    containerEngine.start();
+  // temporary will be like this
+  const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
+  buttonIDs.map((id)=>{
+    const button: HTMLButtonElement = <HTMLButtonElement>(document.getElementById(id));
+    if (button) {
+      button.addEventListener('click', (e) => {
+        localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
+        containerEngine.start();
+      });
+    }
+    
   });
-  const loginButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('login'));
-  if (loginButton) {
-    loginButton.addEventListener('click', (e) => {
-      TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
-      containerEngine.start();
-    });
-  }
   
-  const addLibButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('create-library'));
-  addLibButton.addEventListener('click', (e) => {
-    TakeUserInput.actionName = (<HTMLButtonElement>(e.target)).id;
-    containerEngine.start();
-  });
+  
 };
 
 runInContainer();
