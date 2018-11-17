@@ -1,65 +1,42 @@
+import { ITakeUserInput } from './../../contracts/engine/event_handlers/take-user-input';
 import { inject, injectable } from 'inversify';
 import { TextModifier } from '../../common/text-modifier';
+import { Constants } from '../../common/constants';
+import * as commands from '../DomEventHandlers';
+import { Labels } from '../../common/label-constants';
 
-//@injectable()
-export class TakeUserInput {//implements ITakeUserInput {
+@injectable()
+export class TakeUserInput implements ITakeUserInput {
 
-  public static actionName: string = '';
-  public static takeInput(){
-    const action: string = TextModifier.dashToCapitalize(TakeUserInput.actionName);
-    const actionMethod: string = `take${action}UserInput`;
-    return TakeUserInput.executeAction(actionMethod);
-  }
-  public static executeAction(action:string){
-    return (TakeUserInput as any)[action]();
-  }
-
-  public static takeRegisterUserInput(): string{
-      const userName: HTMLInputElement = <HTMLInputElement>(document.getElementById('user_name'));
-      const password: HTMLInputElement = <HTMLInputElement>(document.getElementById('password'));
-      
-      if (userName.value.length === 0 || password.value.length === 0) {
-        //throw new Error(Constants.getUserRegisterEmptyFieldErrorMessage(bookId));
-        throw new Error('Error on register');
-      }
-      const commandText: string =  
-        `AddUser ${userName.value} ${password.value}`;
-      
-      return commandText;
-  }
-
-  public static takeLoginUserInput(): string{
-    const userName: HTMLInputElement = <HTMLInputElement>(document.getElementById('login_name'));
-    const password: HTMLInputElement = <HTMLInputElement>(document.getElementById('login-password'));
+  public takeInput(): string{
     
-    if (userName.value.length === 0 || password.value.length === 0) {
-      //throw new Error(Constants.getBookNotFoundErrorMessage(bookId));
-      throw new Error('Error on register');
+    const actionName: string = <string>localStorage.getItem(Labels.lsActionClicked)
+    const action: string = TextModifier.dashToCapitalize(actionName);
+    const actionCommand: string = `Take${action}UserInput`;
+
+    return this.callTakeInputAction(actionCommand);
+  }
+  private callTakeInputAction(actionCommand: string): string{
+    const command: any = Object
+      .keys(commands)
+      .reduce((allCommands: Map<string, new () => ITakeUserInput>, commandName: string): Map<string, new () => ITakeUserInput> => {
+          allCommands.set(commandName, (<any>commands)[actionCommand]);
+
+        return allCommands;
+      },
+      new Map()
+    );
+   
+    const userInputAction: (new () => ITakeUserInput) | undefined  = command.get(actionCommand);    
+    if (!userInputAction) {
+      throw new Error(Constants.getInvalidCommandErrorMessage(actionCommand));
     }
-    const commandText: string =  `LoginUser ${userName.value} ${password.value}`;
-    
-    return commandText;
-}
 
-public static takeCreateLibraryUserInput(): string{
-    const userName: HTMLInputElement = <HTMLInputElement>(document.getElementById('user_name'));
-    const library: HTMLInputElement = <HTMLInputElement>(document.getElementById('library_name'));
-    const address: HTMLInputElement = <HTMLInputElement>(document.getElementById('address'));
-    
-    if (address.value.length === 0 || library.value.length === 0) {
-      //throw new Error(Constants.getLibraryAddEmptyFieldsErrorMessage(bookId));
-      throw new Error('Error on library add read input');
+    const takeInputCommand: ITakeUserInput = new userInputAction();
+    return takeInputCommand.takeInput();
+  
     }
-    // AddLibrary gosho NovoLib sofia
-    const commandText: string =  
-      `AddLibrary ${userName.value} ${library.value} ${address.value}\r\n
-      AddOwner ${userName.value} ${address.value}`;
-    
-    return commandText;
-}
-
-
-
+  
 
 }
 

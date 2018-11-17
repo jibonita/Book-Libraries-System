@@ -1,5 +1,4 @@
 export interface ITakeUserInput {
-        [actionMethod:string]: any;
-    
+    takeInput(): string;
     }
   

@@ -15,6 +15,10 @@ export class Constants {
   public static getUserCreatedSuccessMessage(userName: string): string {
       return `User ${userName} created`;
   }
+
+  public static getUserLoginSuccessMessage(userName: string): string {
+    return `User ${userName} successfully logged in`;
+}
   public static getOwnerCreatedSuccessMessage(name: string): string {
     return `Owner ${name} created`;
 }
@@ -23,8 +27,8 @@ export class Constants {
     return `Book ${bookName} added to library ${libraryName}`;
   }
 
-  public static getBookRemovedSuccessMessage(bookId: string, libraryId: string): string {
-    return `Book removed from library ${libraryId}`;
+  public static getBookRemovedSuccessMessage(bookName: string, libraryId: string): string {
+    return `Book ${bookName} removed from library ${libraryId}`;
   }
 
   // error messages
@@ -44,8 +48,16 @@ export class Constants {
     return `User ${username} already exists`;
   }
 
+  public static searchTypeNotSpecified(): string {
+    return `The search type wasn't specified`;
+  }
+
   public static getBookNotFoundErrorMessage(bookId: number): string {
     return `Book ID:${bookId} not found`;
+  }
+
+  public static getBookTitleNotFoundSeachMessage(): string {
+    return `No book titles matched your search`;
   }
 
   public static getOwnerNotFoundErrorMessage(ownerName: string): string {
@@ -62,11 +74,23 @@ export class Constants {
   public static getBorrowedBookSuccessMessage(book: string, user: string): string {
     return `Book ${book} was borrowed by ${user}.`;
   }
-
+   
   public static getReturnedBookSuccessMessage(book: string, user: string): string {
     return `Book ${book} was returned by ${user}.`;
   }
   public static getBookNotInUserListErrorMessage(book: string, user: string): string {
     return `Book ${book} is not in ${user}'s borrow list.`;
+  }
+
+  public static getUserRegisterEmptyFieldErrorMessage(): string {
+    return `Please fill both username and password fields`;
+  }
+
+  public static getWrongLoginErrorMessage(): string {
+    return `Wrong Login data`;
+  }
+
+  public static getLibraryAddEmptyFieldsErrorMessage(): string {
+    return `Error on library add`;
   }
 }
