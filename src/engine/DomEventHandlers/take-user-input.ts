@@ -56,10 +56,7 @@ public static takeCreateLibraryUserInput(): string{
       AddOwner ${userName.value} ${address.value}`;
     
     return commandText;
-}
-
-
-
+  }
 
 }
 
