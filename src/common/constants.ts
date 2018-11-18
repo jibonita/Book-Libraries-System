@@ -16,6 +16,9 @@ export class Constants {
       return `User ${userName} created`;
   }
 
+  public static getSearchSuccessMessage(): string {
+    return `Search results are displayed`;
+}
   public static getUserLoginSuccessMessage(userName: string): string {
     return `User ${userName} successfully logged in`;
 }
@@ -82,6 +85,9 @@ export class Constants {
     return `Book ${book} is not in ${user}'s borrow list.`;
   }
 
+  public static getBookSearchEmptyFieldErrorMessage(): string {
+    return `Please search by Title or by Author`;
+  }
   public static getUserRegisterEmptyFieldErrorMessage(): string {
     return `Please fill both username and password fields`;
   }

@@ -11,30 +11,20 @@ import { Labels } from "./common/label-constants";
 
 console.log("type");
 
-
-
-const runInLocalEnvironment: () => void = (): void => {
-  const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-  containerEngine.start();
-};
-
 const runInContainer: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
 
-  // temporary will be like this
-  const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
-  buttonIDs.map((id)=>{
+  const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book', 'search-book'];
+  buttonIDs.map((id: string)=>{
     const button: HTMLButtonElement = <HTMLButtonElement>(document.getElementById(id));
     if(button){
-       button.addEventListener('click', (e) => {
+       button.addEventListener('click', (e: MouseEvent) => {
         localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
         containerEngine.start();
       });
     }
   });
-  
-  
-};
+  };
 
 runInContainer();
 

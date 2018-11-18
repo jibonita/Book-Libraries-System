@@ -1,5 +1,7 @@
+import { SearchBook } from './../commands/search-manager/search-for-book';
 import { TakeUserInput } from './../engine/DomEventHandlers/take-user-input';
 import { ITakeUserInput } from './../../dist/contracts/engine/event_handlers/take-user-input.d';
+
 // tslint:disable
 import { Container, interfaces } from 'inversify';
 
@@ -17,9 +19,6 @@ import {
 import {
     CommandFactory,
     CommandProcessor,
-    //FileReader,
-    ConsoleWriter,
-    ContainerCommandFactory,
     DataFormatter,
     Engine,
     ModelsFactory,
@@ -38,6 +37,7 @@ container.bind<IModelsFactory>(TYPES.modelsFactory).to(ModelsFactory);
 container.bind<ICommandProcessor>(TYPES.commandProcessor).to(CommandProcessor);
 container.bind<IDataFormatter>(TYPES.dataFormatter).to(DataFormatter);
 container.bind<ITakeUserInput>(TYPES.userInput).to(TakeUserInput);
+container.bind<ICommand>(TYPES.search).to(SearchBook);
 container.bind<IEngine>(TYPES.engine).to(Engine);
 
 // container.bind<IReader>(TYPES.reader).to(FileReader); // Change here if you need html reader

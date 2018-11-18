@@ -5,5 +5,4 @@ export interface IGlobalDatabase {
   libraryDatabase: ILibrary[];
   bookDatabase: IBook[];
 
-  push(source: any[], value: any): void;
 }
