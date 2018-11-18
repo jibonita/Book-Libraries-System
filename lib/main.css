@@ -5,3 +5,15 @@
 #result {
     height: 300px;
 }
+
+.hiden2 {
+    display: none;
+}
+
+.to-show {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}

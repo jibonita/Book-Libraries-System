@@ -17,15 +17,15 @@
 <body>
     <nav class="nav-extended col s9">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">Welcome to Your Library</a>
+            <a href="./index.html" class="brand-logo center">Welcome to Your Library</a>
         </div>
         <div class="nav-content">
             <ul id="nav-mobile" class="tabs tabs-transparent ">
-                <li class="tab"><a href="#addBook">Add Book</a></li>
-                <li class="tab"><a href="#swich-register">Resister</a></li>
-                <li class="tab"><a href="#swich-login" class="active">Login</a></li>
-                <li class="tab"><a href="#switch-search" >Search Book</a></li>
-                <li class="tab"><a href="#createLibrary">Create Library</a></li>
+                <li class="tab to-show"><a href="#addBook">Add Book</a></li>
+                <li class="tab to-hide"><a href="#swich-register">Resister</a></li>
+                <li class="tab to-hide"><a href="#swich-login" class="active">Login</a></li>
+                <li class="tab to-show"><a href="#switch-search">Search Book</a></li>
+                <li class="tab to-show"><a href="#createLibrary">Create Library</a></li>
                 <li class="tab disabled">
                     <a href="#logger"></a>
                 </li>
@@ -34,6 +34,7 @@
     </nav>
     <br>
     <br>
+
     <div id="addBook" class="col s12">
         <div class="row">
             <form class="col s10">
@@ -125,35 +126,32 @@
                 </div>
             </div>
 
-
-            
             <div id="switch-search" class="col s12">
-                    <div class="row">
-                        <form class="col s10">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    Search by Book Title:
-                                    <div class="input-field inline">
-                                        <input placeholder="book title:" id="search_book_title" type="text" class="validate">
-                                        <label for="search_book_title"></label>
-                                    </div>
+                <div class="row">
+                    <form class="col s10">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                Search by Book Title:
+                                <div class="input-field inline">
+                                    <input placeholder="book title:" id="search_book_title" type="text" class="validate">
+                                    <label for="search_book_title"></label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                        Search by Book Author:
-                                    <div class="input-field inline">
-                                        <input placeholder="book author:" id="search_book_author" type="text" class="validate" >
-                                        <label for="search_book_author"></label>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                Search by Book Author:
+                                <div class="input-field inline">
+                                    <input placeholder="book author:" id="search_book_author" type="text" class="validate">
+                                    <label for="search_book_author"></label>
                                 </div>
                             </div>
-                            <a class="waves-effect waves-light btn btn-action" id="search-book">Search</a>
-                            <div class="card-panel #e57373 red lighten-2" ><span id="result-display-book">Result:</span></div>
-                        </form>
-                    </div>
+                        </div>
+                        <a class="waves-effect waves-light btn btn-action" id="search-book">Search</a>
+                        <div class="card-panel #e57373 red lighten-2">Result:</div>
+                    </form>
                 </div>
-
+            </div>
 
             <div id="createLibrary" class="col s12">
                 <div class="row">
@@ -181,7 +179,7 @@
                     </form>
                 </div>
             </div>
-            
+
         </div>
         <div id="logs" class="col s3">
             <textarea placeholder="Result here" class="form-control light-blue col-md-8 offset-2" id="result" rows="10"></textarea>

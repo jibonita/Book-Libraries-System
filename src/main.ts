@@ -24,6 +24,25 @@ const runInContainer: () => void = (): void => {
       });
     }
   });
+  const resultField: HTMLTextAreaElement = <HTMLTextAreaElement>(document.getElementById('result'));
+  resultField.addEventListener('DOMSubtreeModified', () => {
+    console.log("event caught!")
+    if (resultField.innerHTML.includes("successfully logged in")) {
+      const toHide: HTMLCollection = <HTMLCollection>(document.getElementsByTagName("li"));
+      Array.from(toHide).forEach((li) => {
+        console.log(li)
+        if (li.className === 'tab to-hide') {
+          li.className = 'hiden2';
+        } 
+        if (li.className === 'tab to-show') {
+          li.className = 'tab show';
+        }
+      });
+
+      console.log("if caught ")
+    }
+  })//
+
   };
 
 runInContainer();
