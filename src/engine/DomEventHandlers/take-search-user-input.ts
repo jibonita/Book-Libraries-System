@@ -18,11 +18,13 @@ export class TakeSearchBookUserInput{
     public takeInput(): string{
 
         const bookTitle: HTMLInputElement = <HTMLInputElement>(document.getElementById('search_book_title'));
-        console.log(bookTitle.value)
         const bookAuthor: HTMLInputElement = <HTMLInputElement>(document.getElementById('search_book_author'));
-        console.log(bookAuthor.value)
-        if (bookTitle.value.length === 0 && bookAuthor.value.length === 0) {
+        if (!bookTitle.value.length && !bookAuthor.value.length) {
             this._writer.write(Constants.getBookSearchEmptyFieldErrorMessage());
+            return '';
+        }
+        if (bookTitle.value.length && bookAuthor.value.length) {
+            this._writer.write(Constants.getBookMultipleSearchMethodErrorMessage());
             return '';
         }
         let commandText: string = ''
@@ -35,7 +37,6 @@ export class TakeSearchBookUserInput{
             commandText = `SearchBook ${bookAuthor.value} byauthor`
 
         }
-        console.log(commandText);
         
         return commandText;
     }

@@ -1,6 +1,6 @@
 import { SearchBook } from './../commands/search-manager/search-for-book';
 import { TakeUserInput } from './../engine/DomEventHandlers/take-user-input';
-import { ITakeUserInput } from './../../dist/contracts/engine/event_handlers/take-user-input.d';
+import { ITakeUserInput } from '../contracts/engine/event_handlers';
 
 // tslint:disable
 import { Container, interfaces } from 'inversify';

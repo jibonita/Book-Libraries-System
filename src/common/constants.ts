@@ -17,7 +17,7 @@ export class Constants {
   }
 
   public static getSearchSuccessMessage(): string {
-    return `Search results are displayed`;
+    return `Search results are displayed below`;
 }
   public static getUserLoginSuccessMessage(userName: string): string {
     return `User ${userName} successfully logged in`;
@@ -88,6 +88,10 @@ export class Constants {
   public static getBookSearchEmptyFieldErrorMessage(): string {
     return `Please search by Title or by Author`;
   }
+
+  public static getBookMultipleSearchMethodErrorMessage(): string {
+    return `Please use only one search method`;
+  }
   public static getUserRegisterEmptyFieldErrorMessage(): string {
     return `Please fill both username and password fields`;
   }
@@ -96,7 +100,7 @@ export class Constants {
   }
 
   public static getWrongLoginErrorMessage(): string {
-    return `Wrong Login data`;
+    return `User does not exist, please register`;
   }
 
   public static getLibraryAddEmptyFieldsErrorMessage(): string {

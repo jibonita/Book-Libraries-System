@@ -31,20 +31,18 @@ export class SearchBook implements ICommand {
     }
 
   private SeacrhByTitle(searchTerm: string){
-
-    const matchingBooks: IBook[] = this._data.bookDatabase.filter((book: IBook) => book.title.includes(searchTerm));
+    const matchingBooks: IBook[] = this._data.bookDatabase.filter((book: IBook) => (book.title.toLowerCase()).includes((searchTerm.toLowerCase())));
     if (!matchingBooks.length) {
       throw new Error(Constants.getBookTitleNotFoundSeachMessage());
     }
-
-    localStorage.setItem(Labels.searchResult, JSON.parse(matchingBooks.join('\n')));
+    localStorage.setItem(Labels.searchResult, JSON.stringify(matchingBooks));
   }
 
   private SeacrhByAuthor(searchTerm: string){
-    const matchingBooks: IBook[] = this._data.bookDatabase.filter((book: IBook) => searchTerm.includes(book.author));
+    const matchingBooks: IBook[] = this._data.bookDatabase.filter((book: IBook) => (book.author.toLowerCase()).includes((searchTerm.toLowerCase())));
     if (!matchingBooks.length) {
       throw new Error(Constants.getBookTitleNotFoundSeachMessage());
     }
-    localStorage.setItem(Labels.searchResult, matchingBooks.join('\n'));
+    localStorage.setItem(Labels.searchResult, JSON.stringify(matchingBooks));
   }
 }

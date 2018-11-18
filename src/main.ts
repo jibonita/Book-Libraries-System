@@ -2,7 +2,7 @@
 import "reflect-metadata";
 import { container } from "./common/ioc.config";
 import { TYPES } from "./common/types";
-import { ICommandFactory, ICommandProcessor, IDataFormatter, IReader, IWriter, IEngine, IModelsFactory, IGlobalDatabase } from "./contracts";
+import { ICommandFactory, ICommandProcessor, IDataFormatter, IReader, IWriter, IEngine, IModelsFactory, IGlobalDatabase, IBook } from "./contracts";
 import { CommandFactory, CommandProcessor, DataFormatter, ConsoleWriter, Engine, ModelsFactory } from "./engine";
 import { GlobalDatabase } from "./data";
 import { TakeUserInput } from "./engine/DomEventHandlers";
@@ -30,7 +30,7 @@ const runInContainer: () => void = (): void => {
     if (resultField.innerHTML.includes("successfully logged in")) {
       const toHide: HTMLCollection = <HTMLCollection>(document.getElementsByTagName("li"));
       Array.from(toHide).forEach((li) => {
-        console.log(li)
+        console.log("li:", li);
         if (li.className === 'tab to-hide') {
           li.className = 'hiden2';
         } 
@@ -38,34 +38,18 @@ const runInContainer: () => void = (): void => {
           li.className = 'tab show';
         }
       });
-
-      console.log("if caught ")
     }
-  })//
+    if (resultField.innerHTML.includes("Search results are displayed below")) {
+      const booksFound: IBook[] = JSON.parse(<any>localStorage.getItem('search-result'));
+      const searchResultContainer: HTMLSpanElement = <HTMLSpanElement>(document.getElementById("search-result-container"));
+      searchResultContainer.innerHTML = `Last search results: <br/>`
+      Array.from(booksFound).forEach((book) => {
+        searchResultContainer.innerHTML += `<b><br/> Book &emsp; Title: ${book.title} &emsp; &emsp; Written by: ${book.author}</b>`;
+      });
+    }
+  })
 
   };
 
 runInContainer();
 
-//runInLocalEnvironment();
-
-
-// kato class
-// class ButtonActionOnClick  {
-//   private buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
-
-//   constructor( buttonId: string ){
-
-//     if(!(buttonId in this.buttonIDs)){
-//       const buttonNotImplementedMessage: string = "Take a look at main.ts";
-//       return ;
-//     }
-//     const buttonClicked: HTMLButtonElement = <HTMLButtonElement>document.getElementById(buttonId);
-
-//      buttonClicked.addEventListener( "click", this.buttonClicked );
-//  }
-//   buttonClicked: (e: any) => void = (e) => {
-//     localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
-//     containerEngine.start();
-//   }
-// }
