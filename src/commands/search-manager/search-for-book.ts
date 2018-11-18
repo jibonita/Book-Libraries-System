@@ -6,7 +6,7 @@ import {
   IBook,
   ILibrary
 } from '../../contracts';
-import { Library, BookTracker } from '../../models';
+import { Labels } from "../../common/label-constants";
 
 @injectable()
 
@@ -18,26 +18,26 @@ export class SearchBook implements ICommand {
   }
 
   public execute(parameters: string[]): string {
-    const [searchTerm, searchType, searchedLibrary] = parameters;
+    const [searchTerm, searchType] = parameters;
     // catch searchType not defined, didn't work with tryCatch :(
         if(searchType === 'bytitle'){
-            return this.SeacrhByTitle(searchTerm);
+            this.SeacrhByTitle(searchTerm);
         } else if (searchType === 'byauthor'){
-            return this.SeacrhByAuthor(searchTerm);
-        }/* else if (searchType === 'inlibrary'){
-           return this.SeacrhInLibrary(searchTerm, searchedLibrary);
-        }*/ else{
+            this.SeacrhByAuthor(searchTerm);
+        } else{
             throw new Error(Constants.searchTypeNotSpecified());
         }
+        return Constants.getSearchSuccessMessage();
     }
 
   private SeacrhByTitle(searchTerm: string){
+
     const matchingBooks: IBook[] = this._data.bookDatabase.filter((book: IBook) => searchTerm.includes(book.title));
     if (!matchingBooks.length) {
       throw new Error(Constants.getBookTitleNotFoundSeachMessage());
     }
 
-    return matchingBooks.join(';');
+    localStorage.setItem(Labels.searchResult, matchingBooks.join('\n'));
   }
 
   private SeacrhByAuthor(searchTerm: string){
@@ -45,22 +45,6 @@ export class SearchBook implements ICommand {
     if (!matchingBooks.length) {
       throw new Error(Constants.getBookTitleNotFoundSeachMessage());
     }
-
-    return matchingBooks.join(';');
+    localStorage.setItem(Labels.searchResult, matchingBooks.join('\n'));
   }
-
-  private SeacrhInLibrary(searchTerm: string, searchedLibrary: string){
-
-  const libraryFound: ILibrary = <ILibrary>this._data.libraryDatabase.find((lib: ILibrary) => lib.name === searchedLibrary);
-  if (!libraryFound) {
-    throw new Error(Constants.getLibraryNotFoundErrorMessage(searchedLibrary));
-  }
-// // find a way to get book names from library book list
-//   const matchingBooks: IBook[] = libraryFound.bookList   ((book: IBook) => searchTerm.includes(book.title)); 
-//   if (!matchingBooks.length) {
-//     throw new Error(Constants.getBookTitleNotFoundSeachMessage());
-//   }
-
-}
-
 }

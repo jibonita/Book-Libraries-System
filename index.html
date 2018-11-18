@@ -23,6 +23,7 @@
             <ul id="nav-mobile" class="tabs tabs-transparent ">
                 <li class="tab"><a href="#swich-register">Resister</a></li>
                 <li class="tab"><a href="#swich-login" class="active">Login</a></li>
+                <li class="tab"><a href="#switch-search" >Search Book</a></li>
                 <li class="tab"><a href="#createLibrary">Create Library</a></li>
                 <li class="tab disabled">
                     <a href="#logger"></a>
@@ -34,6 +35,7 @@
     <br>
     <div class="row">
         <div id="container" class="col s9">
+
             <div id="swich-register" class="col s12">
                 <div class="row">
                     <form class="col s10">
@@ -83,10 +85,39 @@
                             </div>
                         </div>
                         <a class="waves-effect waves-light btn btn-action" id="login">Login</a>
-
                     </form>
                 </div>
             </div>
+
+
+            
+            <div id="switch-search" class="col s12">
+                    <div class="row">
+                        <form class="col s10">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    Search by Book Title:
+                                    <div class="input-field inline">
+                                        <input placeholder="book title:" id="search_book_title" type="text" class="validate">
+                                        <label for="search_book_title"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                        Search by Book Author:
+                                    <div class="input-field inline">
+                                        <input placeholder="book author:" id="search_book_author" type="text" class="validate" >
+                                        <label for="search_book_author"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="waves-effect waves-light btn btn-action" id="search-book">Search</a>
+                            <div class="card-panel #e57373 red lighten-2">Result:</div>
+                        </form>
+                    </div>
+                </div>
+
 
             <div id="createLibrary" class="col s12">
                 <div class="row">

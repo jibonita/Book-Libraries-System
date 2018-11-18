@@ -23,8 +23,6 @@ export class GlobalDatabase implements IGlobalDatabase {
       localStorage.setItem("books", "[]")
     } 
 
-    // console.log(localStorage.getItem("users"));
-    // console.log(JSON.parse(<any>(localStorage.getItem("users"))));
     console.log(this.userDatabase)
     
 
@@ -39,10 +37,6 @@ export class GlobalDatabase implements IGlobalDatabase {
   }
   public get bookDatabase(): IBook[] {
     return this._books;
-  }
-
-  push(source: any[], value: any): void {
-    
   }
 
 }

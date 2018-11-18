@@ -10,6 +10,6 @@ export const TYPES: any = {
     writer: Symbol.for('writer'),
     engine: Symbol.for('engine'),
     userInput: Symbol.for('userInput'),
-
+    search: Symbol.for('search'),
     containerCommandFactory: Symbol.for('containerCommandFactory')
 };
