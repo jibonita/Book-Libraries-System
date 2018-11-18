@@ -10,7 +10,6 @@ export class AddUser implements ICommand {
     private readonly _factory: IModelsFactory;
   
     public constructor(@inject(TYPES.globalDatabase) data: IGlobalDatabase, @inject(TYPES.modelsFactory) factory: IModelsFactory) {
-    //public constructor(data: IGlobalDatabase, factory: IModelsFactory) {
       this._data = data;
       this._factory = factory;
     }
