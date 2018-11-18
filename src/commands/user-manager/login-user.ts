@@ -16,10 +16,10 @@ export class LoginUser implements ICommand {
   
     public execute(parameters: string[]): string {
         const [name, password] = parameters;
-  
-        if (this._data.userDatabase
-            .find((user: IUser) => user.name === name && user.password === password)) 
-        {
+  console.log('in func ',this._data.userDatabase)
+        const foundUser: IUser = <IUser>this._data.userDatabase
+                                .find((user: IUser) => user.name === name && user.password === password);
+        if (!foundUser) {
              throw new Error(Constants.getWrongLoginErrorMessage());
         }
         
