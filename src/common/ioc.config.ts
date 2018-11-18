@@ -17,6 +17,7 @@ import {
 import {
     CommandFactory,
     CommandProcessor,
+    //FileReader,
     ConsoleWriter,
     ContainerCommandFactory,
     DataFormatter,
@@ -26,11 +27,13 @@ import {
     HtmlWriter
 } from '../engine';
 import { TYPES } from './types';
-import { GlobalDatabase } from '../data';
+import { GlobalDatabase, GlobalDatabaseLocal } from '../data';
 
 const container: Container = new Container();
 
 container.bind<IGlobalDatabase>(TYPES.globalDatabase).to(GlobalDatabase).inSingletonScope();
+//container.bind<IGlobalDatabase>(TYPES.globalDatabase).to(GlobalDatabaseLocal).inSingletonScope();
+
 container.bind<IModelsFactory>(TYPES.modelsFactory).to(ModelsFactory);
 container.bind<ICommandProcessor>(TYPES.commandProcessor).to(CommandProcessor);
 container.bind<IDataFormatter>(TYPES.dataFormatter).to(DataFormatter);

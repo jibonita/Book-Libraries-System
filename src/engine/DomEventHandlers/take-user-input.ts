@@ -4,10 +4,17 @@ import { TextModifier } from '../../common/text-modifier';
 import { Constants } from '../../common/constants';
 import * as commands from '../DomEventHandlers';
 import { Labels } from '../../common/label-constants';
+import { IWriter } from '../../contracts';
+import { TYPES } from '../../common';
 
 @injectable()
 export class TakeUserInput implements ITakeUserInput {
 
+  private readonly _writer: IWriter;
+    
+  constructor(@inject(TYPES.writer) writer: IWriter ) {
+      this._writer = writer;
+  }
   public takeInput(): string{
     
     const actionName: string = <string>localStorage.getItem(Labels.lsActionClicked)
@@ -27,12 +34,12 @@ export class TakeUserInput implements ITakeUserInput {
       new Map()
     );
    
-    const userInputAction: (new () => ITakeUserInput) | undefined  = command.get(actionCommand);    
+    const userInputAction: (new (writer: IWriter) => ITakeUserInput) | undefined  = command.get(actionCommand);    
     if (!userInputAction) {
       throw new Error(Constants.getInvalidCommandErrorMessage(actionCommand));
     }
 
-    const takeInputCommand: ITakeUserInput = new userInputAction();
+    const takeInputCommand: ITakeUserInput = new userInputAction(this._writer);
     return takeInputCommand.takeInput();
   
     }

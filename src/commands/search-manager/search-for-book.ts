@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-// import { Constants, TYPES  } from '../../common';
+import { Constants, TYPES  } from '../../common';
 import {
   ICommand,
   IGlobalDatabase,

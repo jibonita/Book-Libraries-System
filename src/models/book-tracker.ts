@@ -1,14 +1,16 @@
 import { Book } from "./book";
 import { User } from "./user";
-import { IBook, IUser } from "../contracts";
-export class BookTracker {
+import { IBook, IUser, IBookTracker  } from "../contracts";
+
+export class BookTracker implements IBookTracker {
     private readonly borrowPeriod = 20;
-    private _currentUser: IUser |null = null;
-    private _dateTaken: string = '';
-    private _dateToReturn: string = ''; 
+    private _currentUser!: IUser;
+    private _dateTaken!: string;
+    private _dateToReturn!: string; 
     private _availability: Boolean = true;
 
-  constructor(private _book: IBook) {    
+  constructor(private _book: IBook) {  
+ 
   }
 
   public get book(): IBook {
@@ -19,14 +21,21 @@ export class BookTracker {
     return this._availability;
   }
 
-  public get currentUser(): IUser|null {
+  public get currentUser(): IUser {
     return this._currentUser;
   }
+
+  public get dateTaken(){
+    return this._dateTaken;
+  }
+  public get dateToReturn(){
+    return this._dateToReturn;
+  } 
 
   public set availability(value: Boolean) {
     this._availability = value;
   }
-  public set currentUser(value: IUser | null){
+  public set currentUser(value: IUser ){
     this._currentUser = value;
   }
   public set dateTaken(value: string){
@@ -47,9 +56,9 @@ export class BookTracker {
   }
 
   public clean(){
-    this.availability = true;
-    this.currentUser = null;
-    this.dateTaken = '';
-    this.dateToReturn = '';
+  //   this.availability = true;
+  //   this.currentUser = null;
+  //   this.dateTaken = '';
+  //   this.dateToReturn = '';
   }
 }

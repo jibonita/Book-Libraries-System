@@ -10,15 +10,15 @@ export class UpdateFields {
 
   public updateUserList(){
     if(this.book.availability){
-        //this.user.updateLists(this.book); 
-        this.user.borrowedBooks.push(this.book);
+        this.user.updateLists(this.book); 
+        //this.user.borrowedBooks.push(this.book);
     } else {
-        //this.user.updateLists(this.book, false); 
+        this.user.updateLists(this.book, false); 
 
-        const bookIndex = this.user.borrowedBooks.findIndex((tracked:BookTracker) =>
-            tracked.book.id === this.book.book.id);
-        this.user.borrowedBooks.splice(bookIndex,1);
-        this.user.booksHistory.push(this.book);
+        // const bookIndex = this.user.borrowedBooks.findIndex((tracked:BookTracker) =>
+        //     tracked.book.id === this.book.book.id);
+        // this.user.borrowedBooks.splice(bookIndex,1);
+        // this.user.booksHistory.push(this.book);
     }
 }
   public updateBookAvailability(){

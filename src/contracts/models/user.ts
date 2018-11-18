@@ -7,4 +7,6 @@ export interface IUser{
 
   borrowedBooks: BookTracker[];
   booksHistory: BookTracker[];
+
+  updateLists(book: BookTracker, isBorrow?: Boolean): void;
 } 

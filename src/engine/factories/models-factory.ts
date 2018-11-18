@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Libraries, BookGenre, UserType } from '../../enums';
-import { IBook, ILibrary, IUser, IModelsFactory } from './../../contracts';
+import { IBook, ILibrary, IUser, IModelsFactory, IOwner } from './../../contracts';
 import { User , Library, Book, Owner, BookTracker } from '../../models';
 
 @injectable()
@@ -9,8 +9,8 @@ export class ModelsFactory implements IModelsFactory {
     return new User(name, password);
   }
   
-  public addOwner(user: IUser, address: string): IUser {
-    return new Owner(user.name, user.password, address);
+  public addOwner(name: string, password: string, address: string, library: BookTracker[] ): IUser {
+    return new Owner(name, password, address, library);
   }
   
   public addBook(title: string, author: string, genre: BookGenre): IBook {
@@ -20,7 +20,7 @@ export class ModelsFactory implements IModelsFactory {
     throw new Error("Method addBookTracker not implemented.");
   }
 
-  public addLibrary(owner: IUser, name: (Libraries| string), address: string): ILibrary {
+  public addLibrary(owner: string, name: (Libraries| string), address: string): ILibrary {
     return new Library(owner, name, address);  
   }
 }

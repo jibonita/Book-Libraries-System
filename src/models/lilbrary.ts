@@ -4,12 +4,12 @@ import { Libraries } from "../enums/library";
 import { BookTracker } from "./book-tracker";
 
 export class Library implements ILibrary {
-  private readonly _owner: IUser;
+  private readonly _owner: string;
   private readonly _name: (Libraries| string);
   private readonly _bookList: BookTracker[];
   private readonly _address: string;
 
-  public constructor(owner: IUser, name: (Libraries| string), libraryAddress: string) {
+  public constructor(owner: string, name: (Libraries| string), libraryAddress: string) {
       // TODO: Validation...
     this._owner = owner;
     this._name = name;
@@ -17,7 +17,7 @@ export class Library implements ILibrary {
     this._bookList = [];
   }
 
-  public get owner(): IUser {
+  public get owner(): string {
       return this._owner;
   }
   public get name(): (Libraries | string) {
