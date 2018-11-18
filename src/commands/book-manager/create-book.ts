@@ -21,13 +21,22 @@ export class AddBook implements ICommand {
         const bookGenreKeyAsString: string = genre.toLocaleLowerCase();
         const bookGenreKey: keyof typeof BookGenre = <keyof typeof BookGenre>bookGenreKeyAsString;
         const bookGenre: BookGenre = <BookGenre>(BookGenre[bookGenreKey]);
+        
         if (bookGenre === undefined) {
           throw new Error(Constants.getGenreNotExistErrorMessage(genre));
         }
         
         const book: IBook = this._factory.addBook(title, author, bookGenre);
-        this._data.bookDatabase.push(book);
+        //this._data.bookDatabase.push(book);
+        this.addBookToLocalStorage(book);
     
         return Constants.getBookCreatedSuccessMessage(title);
     }
+
+    public addBookToLocalStorage(book: IBook): void {
+      const bookDB = this._data.bookDatabase;
+      const newBook: IBook = {id: book.id, title:book.title, author:book.author, genre: book.genre };
+      bookDB.push(newBook);
+      localStorage.setItem('books', JSON.stringify(bookDB));
+    }  
   }

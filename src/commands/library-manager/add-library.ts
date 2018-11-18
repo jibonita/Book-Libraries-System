@@ -25,8 +25,7 @@ export class AddLibrary implements ICommand {
       if (!foundUser) {
         throw new Error(Constants.getUserNotExistErrorMessage(userName));
       }
-    // TODO: Check if this owner already has a library
-    
+        
       if (foundUser.userType === UserType.Owner) {
         throw new Error("This user already has a library, :(");
       }

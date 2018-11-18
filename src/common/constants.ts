@@ -85,6 +85,9 @@ export class Constants {
   public static getUserRegisterEmptyFieldErrorMessage(): string {
     return `Please fill both username and password fields`;
   }
+  public static getBookAddEmptyFieldErrorMessage(): string {
+    return `Please fill all book fields`;
+  }
 
   public static getWrongLoginErrorMessage(): string {
     return `Wrong Login data`;

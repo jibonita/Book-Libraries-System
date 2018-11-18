@@ -21,6 +21,7 @@
         </div>
         <div class="nav-content">
             <ul id="nav-mobile" class="tabs tabs-transparent ">
+                <li class="tab"><a href="#addBook">Add Book</a></li>
                 <li class="tab"><a href="#swich-register">Resister</a></li>
                 <li class="tab"><a href="#swich-login" class="active">Login</a></li>
                 <li class="tab"><a href="#createLibrary">Create Library</a></li>
@@ -32,6 +33,41 @@
     </nav>
     <br>
     <br>
+    <div id="addBook" class="col s12">
+        <div class="row">
+            <form class="col s10">
+                <div class="row">
+                    <div class="input-field col s12">
+                        Book Title:
+                        <div class="input-field inline">
+                            <input placeholder="Book title" id="book_title" type="text" class="validate">
+                            <label for="book_title"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        author:
+                        <div class="input-field inline">
+                            <input placeholder="author" id="book_author" type="text" class="validate">
+                            <label for="author"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        genre:
+                        <div class="input-field inline">
+                            <input placeholder="genre" id="book_genre" type="text" class="validate">
+                            <label for="genre"></label>
+                        </div>
+                    </div>
+                </div>
+                <a class="waves-effect waves-light btn btn-action" id="add-book">Add Book</a>
+
+            </form>
+        </div>
+    </div>
     <div class="row">
         <div id="container" class="col s9">
             <div id="swich-register" class="col s12">
@@ -114,6 +150,7 @@
                     </form>
                 </div>
             </div>
+            
         </div>
         <div id="logs" class="col s3">
             <textarea placeholder="Result here" class="form-control light-blue col-md-8 offset-2" id="result" rows="10"></textarea>
