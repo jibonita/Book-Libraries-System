@@ -5,17 +5,21 @@ import { IOwner } from "../contracts/models/owner";
 
 export class Owner extends User implements IOwner {
 
+    private _address: string
+    private _library: ILibrary;
 constructor(
      _name: string,
      _password: string,
-     private _address: string,
-     private _library: ILibrary) 
+     address: string,
+     library: ILibrary) 
     {
     super(
         _name,
         _password,
         UserType.Owner
         );    
+        this._address = address;
+        this._library = library;
     }
 
     public get address():string{

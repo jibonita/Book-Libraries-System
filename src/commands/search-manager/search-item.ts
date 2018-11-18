@@ -22,7 +22,7 @@ export class Search {
       return foundLibrary;
     }
 
-    public static findUser(db: IGlobalDatabase, username: string): IUser | undefined{
+    public static findUser(db: IGlobalDatabase, username: string): IUser {
       const foundUser: IUser = <IUser>db.userDatabase.find((user:IUser) => user.name === username);
         if (!foundUser) {
         throw new Error(Constants.getUserNotExistErrorMessage(username));

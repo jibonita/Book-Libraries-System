@@ -20,7 +20,7 @@ export class AddBookToUserLibrary implements ICommand {
         const foundUser: Owner = <Owner>Search.findUser(this._data, username);
         const foundLibrary: ILibrary = foundUser.library;
         const foundBook: IBook = this._data.bookDatabase[this._data.bookDatabase.length-1];
-        
+                      
         const bookForLib = new BookTracker(foundBook);
         foundLibrary.bookList.push(bookForLib);
     

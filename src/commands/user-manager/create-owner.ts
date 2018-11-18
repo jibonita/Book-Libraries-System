@@ -4,6 +4,7 @@ import { Constants } from "../../common/constants";
 import { injectable, inject } from "inversify";
 import { TYPES } from "../../common/types";
 import { Search } from '../search-manager';
+import { Owner } from '../../models';
 
 @injectable()
 export class AddOwner implements ICommand {
@@ -39,8 +40,11 @@ export class AddOwner implements ICommand {
 
     public addUserToLocalStorage(user: IUser): void {
       const userDB = this._data.userDatabase;
-      const newUser = {name: user.name, password: user.password, userType: user.userType, borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , updateLists: user.updateLists}
-      userDB.push(newUser);
+      userDB.push(user);
+      // const newUser = {name: user.name, password: user.password, userType: user.userType, 
+      //   borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , 
+      //   updateLists: user.updateLists }
+      // userDB.push(newUser);
       
       localStorage.setItem('users', JSON.stringify(userDB));
     }
