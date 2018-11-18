@@ -1,123 +1,124 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Add user</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./src/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./lib/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="./src/css/materialize.min.css"  media="screen,projection"/>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script>
 </head>
-<body>
-    Samples
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Welcome</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Resister</a></li>
-        <li><a href="#">Nothing!</a></li>
-      </ul>
-    </div>
-  </nav>
-  <table>
-    <tr>
-      <td>
-        <div class="col" >
-          Register
-          <div class="row">
-              <form class="col s12">
-                <div class="row">
-                  <div class="input-field col s6">
-                      Username: 
-                    <div class="input-field inline">
-                          <input placeholder="Name" id="user_name" type="text" class="validate" value="ime">
-                          <label for="user_name"></label>
-                        </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                      Password:
-                    <div class="input-field inline">
-                          <input placeholder="Password" id="password" type="password" class="validate" value="pass" autocomplete="user-password">
-                          <label for="password"></label>
-                        </div>
-                  </div>
-                </div>
-              </form>
-          </div>
-          <a class="waves-effect waves-light btn btn-action" id="register">Register</a>
-        </div>
-      </td>
-      <td>
-        <div class="col">
-          Login
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                    Username: 
-                  <div class="input-field inline">
-                        <input placeholder="Name" id="login_name" type="text" class="validate" value="ime">
-                        <label for="user_name"></label>
-                      </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                    Password:
-                  <div class="input-field inline">
-                        <input placeholder="Password" id="login-password" type="password" class="validate" value="pass" autocomplete="user-password">
-                        <label for="password"></label>
-                      </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <a class="waves-effect waves-light btn btn-action" id="login">Login</a>
-        </div>
-  
-      </td>
-      <td>
-        <div class="col">
-          Library
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                    Library Name: 
-                  <div class="input-field inline">
-                        <input placeholder="Library Name" id="library_name" type="text" class="validate" value="Bibliotekata">
-                        <label for="library_name"></label>
-                      </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                    Address:
-                  <div class="input-field inline">
-                        <input placeholder="Address" id="address" type="text" class="validate" value="Sofia" >
-                        <label for="address"></label>
-                      </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <a class="waves-effect waves-light btn btn-action" id="create-library">Create Library</a>
-        </div>
-  
-      </td>
-    </tr>
-  </table>
-  
-       
-        
-    
 
-  <textarea placeholder="Result here" class="form-control col-md-8 offset-2" id="result" rows="10"></textarea>
-<script src="./dist/main.js"></script>
+<body>
+    <nav class="nav-extended col s9">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Welcome to Your Library</a>
+        </div>
+        <div class="nav-content">
+            <ul id="nav-mobile" class="tabs tabs-transparent ">
+                <li class="tab"><a href="#register">Resister</a></li>
+                <li class="tab"><a href="#login" class="active">Login</a></li>
+                <li class="tab"><a href="#createLibrary">Create Library</a></li>
+                <li class="tab disabled"><a href="#logger">Logger</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="row">
+        <div id="container" class="col s9">
+            <div id="register" class="col s12">
+                <div class="row">
+                    <form class="col s10">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                User name:
+                                <div class="input-field inline">
+                                    <input placeholder="Choose account name" id="user_name" type="text" class="validate">
+                                    <label for="user_name"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                Password:
+                                <div class="input-field inline">
+                                    <input placeholder="Password" id="password" type="password" class="validate" autocomplete="user-password">
+                                    <label for="password"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn btn-action" id="register">Register</a>
+
+                    </form>
+                </div>
+            </div>
+
+            <div id="login" class="col s12">
+                <div class="row">
+                    <form class="col s10">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                User name:
+                                <div class="input-field inline">
+                                    <input placeholder=" User name" id="login_name" type="text" class="validate">
+                                    <label for="user_name"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                Password:
+                                <div class="input-field inline">
+                                    <input placeholder="Password" id="login-password" type="password" class="validate" autocomplete="user-password">
+                                    <label for="password"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn btn-action" id="login">Login</a>
+
+                    </form>
+                </div>
+            </div>
+
+            <div id="createLibrary" class="col s12">
+                <div class="row">
+                    <form class="col s10">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                Library Name:
+                                <div class="input-field inline">
+                                    <input placeholder="Library Name" id="library_name" type="text" class="validate">
+                                    <label for="library_name"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                Address:
+                                <div class="input-field inline">
+                                    <input placeholder="Address" id="address" type="text" class="validate">
+                                    <label for="address"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn btn-action" id="create-library">Create Library</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="logs" class="col s3">
+            <textarea placeholder="Result here" class="form-control blue col-md-8 offset-2" id="result" rows="10"></textarea>
+        </div>
+    </div>
+    <script src="./dist/main.js"></script>
+    <script src="./lib/dom-controler.js"></script>
 </body>
+
 </html>
