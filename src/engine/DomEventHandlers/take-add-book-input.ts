@@ -26,9 +26,8 @@ export class TakeAddBookUserInput implements ITakeUserInput{
         
         // AddBook title author genre
         const commandText: string =  `AddBook ${title.value} ${author.value} ${genre.value}\n\r
-        AddBookToUserLibrary ${userName}`;
-        console.log(commandText);
-        
+            AddBookToUserLibrary ${userName}`;
+               
         return commandText;
     }
 }
