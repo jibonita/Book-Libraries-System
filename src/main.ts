@@ -11,21 +11,7 @@ import { Labels } from "./common/label-constants";
 
 console.log("type");
 
-const initialSetUp = () => {
 
-  if (!localStorage.getItem("users")) {
-    localStorage.setItem("users", "[]")
-  } 
-
-  if (!localStorage.getItem("libraries")) {
-    localStorage.setItem("libraries", "[]")
-  } 
-
-  if (!localStorage.getItem("books")) {
-    localStorage.setItem("books", "[]")
-  } 
-
-}
 
 const runInLocalEnvironment: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
@@ -34,7 +20,7 @@ const runInLocalEnvironment: () => void = (): void => {
 
 const runInContainer: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-  initialSetUp();
+
   // temporary will be like this
   const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
   buttonIDs.map((id)=>{

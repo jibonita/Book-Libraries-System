@@ -8,8 +8,26 @@ export class GlobalDatabase implements IGlobalDatabase {
   private readonly _books: IBook[];
   
   public constructor() {
+
+    if (!localStorage.getItem("users")) {
+      localStorage.setItem("users", "[]")
+    } 
     this._users = JSON.parse(<any>(localStorage.getItem("users")));
+  
+    if (!localStorage.getItem("libraries")) {
+      localStorage.setItem("libraries", "[]")
+    } 
     this._libraries = JSON.parse(<any>(localStorage.getItem("libraries")));
+  
+    if (!localStorage.getItem("books")) {
+      localStorage.setItem("books", "[]")
+    } 
+
+    // console.log(localStorage.getItem("users"));
+    // console.log(JSON.parse(<any>(localStorage.getItem("users"))));
+    console.log(this.userDatabase)
+    
+
     this._books = JSON.parse(<any>(localStorage.getItem("books")));
   }
 
