@@ -19,10 +19,6 @@ export class AddOwner implements ICommand {
     public execute(parameters: string[]): string {
         const [username, library] = parameters;
   
-        // const foundUser: IUser = <IUser>(this._data.userDatabase.find((user: IUser) => user.name === username));
-        // if (!foundUser) {
-        //     throw new Error(Constants.getUserNotExistErrorMessage(username));
-        // }
         const foundUser: IUser = <IUser>(Search.findUser(this._data, username));
 
         const foundUserIndex: number = this._data.userDatabase.findIndex((user: IUser) => user.name === foundUser.name);
@@ -32,16 +28,21 @@ export class AddOwner implements ICommand {
         
         this._data.userDatabase.splice(foundUserIndex, 1);
 
-        // const foundLibrary: ILibrary = <ILibrary>(this._data.libraryDatabase.find((library: ILibrary) => library.owner === foundUser.name));
-        // if (!foundLibrary) {
-        //     throw new Error(Constants.getLibraryNotFoundErrorMessage(library));
-        // }
         const foundLibrary: ILibrary = <ILibrary>(Search.findLibrary(this._data, library));
 
         const owner: IUser = this._factory.addOwner(foundUser.name, foundUser.password, foundLibrary.address, foundLibrary.bookList);
-        this._data.userDatabase.push(owner);
+        //this._data.userDatabase.push(owner);
+        this.addUserToLocalStorage(owner);
     
         return Constants.getOwnerCreatedSuccessMessage(username);
+    }
+
+    public addUserToLocalStorage(user: IUser): void {
+      const userDB = this._data.userDatabase;
+      const newUser = {name: user.name, password: user.password, userType: user.userType, borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , updateLists: user.updateLists}
+      userDB.push(newUser);
+      
+      localStorage.setItem('users', JSON.stringify(userDB));
     }
   }
   

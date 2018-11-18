@@ -5,9 +5,18 @@ import { BookTracker } from "../../models";
 export class Search {
     
     public static findLibrary(db: IGlobalDatabase, name: string): ILibrary | undefined {
-      const foundLibrary: ILibrary | undefined = db.libraryDatabase.find((library: ILibrary) => library.name === name);
+      const foundLibrary: ILibrary = <ILibrary>db.libraryDatabase.find((library: ILibrary) => library.name === name);
       if (!foundLibrary) {
         throw new Error(Constants.getLibraryExistsErrorMessage(name));
+      }
+      
+      return foundLibrary;
+    }
+
+    public static findExistingLibrary(db: IGlobalDatabase, name: string): ILibrary | undefined {
+      const foundLibrary: ILibrary = <ILibrary>db.libraryDatabase.find((library: ILibrary) => library.name === name);
+      if (foundLibrary) {
+        throw new Error(Constants.getLibraryNotFoundErrorMessage(name));
       }
       
       return foundLibrary;

@@ -21,11 +21,12 @@ export class AddLibrary implements ICommand {
     public execute(parameters: string[]): string {
       const [userName, name, address] = parameters;
 
-      const foundUser: IUser | undefined = this._data.userDatabase.find((user:IUser) => user.name === userName);
+      const foundUser: IUser = <IUser>this._data.userDatabase.find((user:IUser) => user.name === userName);
       if (!foundUser) {
-        throw new Error(Constants.getOwnerNotFoundErrorMessage(userName));// update this message
+        throw new Error(Constants.getUserNotExistErrorMessage(userName));
       }
     // TODO: Check if this owner already has a library
+    
       if (foundUser.userType === UserType.Owner) {
         throw new Error("This user already has a library, :(");
       }

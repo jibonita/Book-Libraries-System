@@ -9,7 +9,7 @@ export class Constants {
   }
   
   public static getLibraryCreatedSuccessMessage(libraryName: string, ownerName: string): string {
-    return `Library ${libraryName} with owner ${ownerName} created`;
+    return `Library ${libraryName} with `;//owner ${ownerName} created`;
   }
 
   public static getUserCreatedSuccessMessage(userName: string): string {

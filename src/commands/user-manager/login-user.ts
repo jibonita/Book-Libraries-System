@@ -16,7 +16,7 @@ export class LoginUser implements ICommand {
   
     public execute(parameters: string[]): string {
         const [name, password] = parameters;
-  console.log('in func ',this._data.userDatabase)
+  
         const foundUser: IUser = <IUser>this._data.userDatabase
                                 .find((user: IUser) => user.name === name && user.password === password);
         if (!foundUser) {
@@ -24,6 +24,7 @@ export class LoginUser implements ICommand {
         }
         
         localStorage.setItem(Labels.lsActiveUsername, name);
+        // show menu
     
         return Constants.getUserLoginSuccessMessage(name);
     }

@@ -9,7 +9,7 @@ import { log } from "util";
 
 @injectable()
 export class TakeLoginUserInput implements ITakeUserInput{
-   private readonly _writer: IWriter;
+    private readonly _writer: IWriter;
     
     constructor(@inject(TYPES.writer) writer: IWriter ) {
         this._writer = writer;
