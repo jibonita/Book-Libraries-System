@@ -28,10 +28,19 @@ export class AddUser implements ICommand {
     }
 
     public addUserToLocalStorage(user: IUser): void {
-      const userDB = this._data.userDatabase;
-      const newUser = {name: user.name, password: user.password, userType: user.userType, borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , updateLists: user.updateLists}
-      userDB.push(newUser);
+      const userDB:IUser[] = [];
+      this._data.userDatabase.forEach((dbUser:IUser)=>{
+        const newUser = {name: dbUser.name, password: dbUser.password, userType: dbUser.userType, 
+          borrowedBooks: dbUser.borrowedBooks, booksHistory: dbUser.booksHistory , updateLists: dbUser.updateLists};
+          userDB.push(newUser);
+      });
+
+      this._data.userDatabase.push(user);
       
+      const newUser = {name: user.name, password: user.password, userType: user.userType, 
+        borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , updateLists: user.updateLists}
+      userDB.push(newUser);
+            
       localStorage.setItem('users', JSON.stringify(userDB));
     }
   }

@@ -39,12 +39,13 @@ export class AddOwner implements ICommand {
     }
 
     public addUserToLocalStorage(user: IUser): void {
-      const userDB = this._data.userDatabase;
-      userDB.push(user);
-      // const newUser = {name: user.name, password: user.password, userType: user.userType, 
-      //   borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , 
-      //   updateLists: user.updateLists }
-      // userDB.push(newUser);
+      const userDB = [...this._data.userDatabase];
+      this._data.userDatabase.push(user);
+     
+      const newUser = {name: user.name, password: user.password, userType: user.userType, 
+        borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , 
+        updateLists: user.updateLists, address: (<Owner>user).address,  library: (<Owner>user).library}
+      userDB.push(newUser);
       
       localStorage.setItem('users', JSON.stringify(userDB));
     }
