@@ -11,6 +11,21 @@ import { Labels } from "./common/label-constants";
 
 console.log("type");
 
+const initialSetUp = () => {
+
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", "[]")
+  } 
+
+  if (!localStorage.getItem("libraries")) {
+    localStorage.setItem("libraries", "[]")
+  } 
+
+  if (!localStorage.getItem("books")) {
+    localStorage.setItem("books", "[]")
+  } 
+
+}
 
 const runInBrowserEnvironment: () => void = (): void => {
   const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
@@ -19,19 +34,38 @@ const runInBrowserEnvironment: () => void = (): void => {
   runButton.addEventListener('click', () => engine.start());
 };
 
+// kato class
+// class ButtonActionOnClick  {
+//   private buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
+
+//   constructor( buttonId: string ){
+
+//     if(!(buttonId in this.buttonIDs)){
+//       const buttonNotImplementedMessage: string = "Take a look at main.ts";
+//       return ;
+//     }
+//     const buttonClicked: HTMLButtonElement = <HTMLButtonElement>document.getElementById(buttonId);
+
+//      buttonClicked.addEventListener( "click", this.buttonClicked );
+//  }
+//   buttonClicked: (e: any) => void = (e) => {
+//     localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
+//     containerEngine.start();
+//   }
+// }
+
+
 const runInContainer: () => void = (): void => {
   const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-  localStorage.clear();
+  initialSetUp();
   // temporary will be like this
   const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
   buttonIDs.map((id)=>{
     const button: HTMLButtonElement = <HTMLButtonElement>(document.getElementById(id));
-    if (button) {
        button.addEventListener('click', (e) => {
         localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
         containerEngine.start();
       });
-    }
     
   });
   

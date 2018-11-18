@@ -3,7 +3,7 @@ import { IUser } from "./user";
 import { BookTracker } from "../../models";
 
 export interface ILibrary {
-    owner: IUser;
+    owner: string;
     name: (Libraries | string);
     bookList: BookTracker[];
     address: string;

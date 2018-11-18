@@ -1,7 +1,9 @@
-import { IGlobalDatabase, ICommand, IModelsFactory, IUser } from "../../contracts";
+import { ILibrary } from './../../contracts/models/library';
+import { IGlobalDatabase, ICommand, IModelsFactory, IOwner, IUser} from "../../contracts";
 import { Constants } from "../../common/constants";
 import { injectable, inject } from "inversify";
 import { TYPES } from "../../common/types";
+import { Search } from '../search-manager';
 
 @injectable()
 export class AddOwner implements ICommand {
@@ -13,18 +15,31 @@ export class AddOwner implements ICommand {
       this._factory = factory;
     }
   
-    // AddOwner username address
+    // AddOwner username library
     public execute(parameters: string[]): string {
-        const [username, address] = parameters;
+        const [username, library] = parameters;
   
-        const foundUser: IUser | undefined = this._data.userDatabase.find((user: IUser) => user.name === username);
-        if (!foundUser) {
-            throw new Error(Constants.getUserNotExistErrorMessage(username));
+        // const foundUser: IUser = <IUser>(this._data.userDatabase.find((user: IUser) => user.name === username));
+        // if (!foundUser) {
+        //     throw new Error(Constants.getUserNotExistErrorMessage(username));
+        // }
+        const foundUser: IUser = <IUser>(Search.findUser(this._data, username));
+
+        const foundUserIndex: number = this._data.userDatabase.findIndex((user: IUser) => user.name === foundUser.name);
+        if (foundUserIndex === -1) {
+          throw new Error(Constants.getUserNotExistErrorMessage(username));
         }
         
-        const user: IUser = this._factory.addOwner(foundUser, address);
-        // the usr stays in users db but is also added in owners ??
-        this._data.ownerDatabase.push(user);
+        this._data.userDatabase.splice(foundUserIndex, 1);
+
+        // const foundLibrary: ILibrary = <ILibrary>(this._data.libraryDatabase.find((library: ILibrary) => library.owner === foundUser.name));
+        // if (!foundLibrary) {
+        //     throw new Error(Constants.getLibraryNotFoundErrorMessage(library));
+        // }
+        const foundLibrary: ILibrary = <ILibrary>(Search.findLibrary(this._data, library));
+
+        const owner: IUser = this._factory.addOwner(foundUser.name, foundUser.password, foundLibrary.address, foundLibrary.bookList);
+        this._data.userDatabase.push(owner);
     
         return Constants.getOwnerCreatedSuccessMessage(username);
     }

@@ -2,6 +2,7 @@ import { IGlobalDatabase, ICommand, IModelsFactory, IUser } from "../../contract
 import { Constants } from "../../common/constants";
 import { injectable, inject } from "inversify";
 import { TYPES } from "../../common/types";
+import { UserType } from '../../enums'
 
 @injectable()
 export class AddUser implements ICommand {
@@ -14,7 +15,6 @@ export class AddUser implements ICommand {
       this._factory = factory;
     }
   
-    // AddUser name password userType
     public execute(parameters: string[]): string {
         const [name, password] = parameters;
   
@@ -23,9 +23,16 @@ export class AddUser implements ICommand {
         }
         
         const user: IUser = this._factory.addUser(name, password);
-        this._data.userDatabase.push(user);
-    
+
+        this.addUserToLocalStorage(user);
+
         return Constants.getUserCreatedSuccessMessage(name);
     }
+
+    public addUserToLocalStorage(user: IUser): void {
+      const userDB = this._data.userDatabase;
+      const newUser: IUser = { name: user.name, password: user.password, userType: user.userType, borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory };
+      userDB.push(newUser);
+      localStorage.setItem('users', JSON.stringify(userDB));
+    }
   }
-  
