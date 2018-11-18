@@ -16,8 +16,8 @@ export class TakeLoginUserInput implements ITakeUserInput{
     }
     public  takeInput(): string{
         const userName: HTMLInputElement = <HTMLInputElement>(document.getElementById('login_name'));
-        const password: HTMLInputElement = <HTMLInputElement>(document.getElementById('login-password'));
-        console.log('in input ', userName.value, password.value)
+        const password: HTMLInputElement = <HTMLInputElement>(document.getElementById('login_password'));
+        
         if (userName.value.length === 0 || password.value.length === 0) {
             this._writer.write(Constants.getUserRegisterEmptyFieldErrorMessage());
             return '';
