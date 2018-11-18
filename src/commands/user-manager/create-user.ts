@@ -20,7 +20,6 @@ export class AddUser implements ICommand {
         if (this._data.userDatabase.find((user: IUser) => user.name === name)) {
              throw new Error(Constants.getUserExistsErrorMessage(name));
         }
-        
         const user: IUser = this._factory.addUser(name, password);
 
         this.addUserToLocalStorage(user);
@@ -30,10 +29,9 @@ export class AddUser implements ICommand {
 
     public addUserToLocalStorage(user: IUser): void {
       const userDB = this._data.userDatabase;
-      userDB.push(user);
+      const newUser = {name: user.name, password: user.password, userType: user.userType, borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory , updateLists: user.updateLists}
+      userDB.push(newUser);
       
-       const newUser: any = { name: user.name, password: user.password, userType: user.userType,
-          borrowedBooks: user.borrowedBooks, booksHistory: user.booksHistory };
       localStorage.setItem('users', JSON.stringify(userDB));
     }
   }
