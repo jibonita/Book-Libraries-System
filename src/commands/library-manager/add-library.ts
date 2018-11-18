@@ -41,8 +41,9 @@ export class AddLibrary implements ICommand {
 
   public addLibraryToLocalStorage(library: ILibrary): void {
     const libraryDB = this._data.libraryDatabase;
-    const newLibrary: ILibrary = { owner: library.owner, name: library.name, address: library.address, bookList: library.bookList };
-    libraryDB.push(newLibrary);
+    
+    libraryDB.push(library);
+
     localStorage.setItem('libraries', JSON.stringify(libraryDB));
   }  
 
