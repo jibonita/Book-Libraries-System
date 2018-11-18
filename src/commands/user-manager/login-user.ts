@@ -14,7 +14,6 @@ export class LoginUser implements ICommand {
       this._factory = factory;
     }
   
-    // LoginUser name password
     public execute(parameters: string[]): string {
         const [name, password] = parameters;
   
