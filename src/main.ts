@@ -27,12 +27,33 @@ const initialSetUp = () => {
 
 }
 
-const runInBrowserEnvironment: () => void = (): void => {
-  const runButton: HTMLButtonElement = <HTMLButtonElement>(document.getElementById('run'));
-  //const engine: IEngine = new Engine(commandProcessor, htmlReader, htmlWriter);
-  const engine: IEngine = container.get<IEngine>(TYPES.engine);
-  runButton.addEventListener('click', () => engine.start());
+const runInLocalEnvironment: () => void = (): void => {
+  const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
+  containerEngine.start();
 };
+
+const runInContainer: () => void = (): void => {
+  const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
+  initialSetUp();
+  // temporary will be like this
+  const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
+  buttonIDs.map((id)=>{
+    const button: HTMLButtonElement = <HTMLButtonElement>(document.getElementById(id));
+    if(button){
+       button.addEventListener('click', (e) => {
+        localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
+        containerEngine.start();
+      });
+    }
+  });
+  
+  
+};
+
+runInContainer();
+
+//runInLocalEnvironment();
+
 
 // kato class
 // class ButtonActionOnClick  {
@@ -53,25 +74,3 @@ const runInBrowserEnvironment: () => void = (): void => {
 //     containerEngine.start();
 //   }
 // }
-
-
-const runInContainer: () => void = (): void => {
-  const containerEngine: IEngine = container.get<IEngine>(TYPES.engine);
-  initialSetUp();
-  // temporary will be like this
-  const buttonIDs: string[] = ['register', 'login', 'create-library', 'add-book'];
-  buttonIDs.map((id)=>{
-    const button: HTMLButtonElement = <HTMLButtonElement>(document.getElementById(id));
-       button.addEventListener('click', (e) => {
-        localStorage.setItem(Labels.lsActionClicked, (<HTMLButtonElement>(e.target)).id);
-        containerEngine.start();
-      });
-    
-  });
-  
-  
-};
-
-runInContainer();
-
-//runInBrowserEnvironment();

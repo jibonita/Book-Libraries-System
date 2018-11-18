@@ -4,4 +4,6 @@ export interface IGlobalDatabase {
   userDatabase: IUser[];
   libraryDatabase: ILibrary[];
   bookDatabase: IBook[];
+
+  push(source: any[], value: any): void;
 }
