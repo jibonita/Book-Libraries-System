@@ -23,9 +23,11 @@ export class TakeAddBookUserInput implements ITakeUserInput{
             this._writer.write(Constants.getBookAddEmptyFieldErrorMessage());
             return '';
         }
+        
         // AddBook title author genre
-        const commandText: string =  `AddBook ${title.value} ${author.value} ${genre.value}`;
-                // AddBookToLibrary libraryName bookId
+        const commandText: string =  `AddBook ${title.value} ${author.value} ${genre.value}\n\r
+        AddBookToUserLibrary ${userName}`;
+        console.log(commandText);
         
         return commandText;
     }

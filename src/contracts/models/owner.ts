@@ -7,5 +7,5 @@ export interface IOwner{
   userType: UserType,
 
   address: string,
-  library: BookTracker[];
+  library: ILibrary;
 } 

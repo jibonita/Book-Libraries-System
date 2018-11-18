@@ -4,7 +4,7 @@ import {  BookTracker } from '../../../models';
 export interface IModelsFactory {
   addUser(name: string, password: string): IUser;
   
-  addOwner(name: string, password: string, address: string, library: BookTracker[]): IUser;
+  addOwner(name: string, password: string, address: string, library: ILibrary): IUser;
 
   addBook(title: string, author: string, genre: BookGenre): IBook;
 

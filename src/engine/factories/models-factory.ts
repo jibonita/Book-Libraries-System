@@ -9,7 +9,7 @@ export class ModelsFactory implements IModelsFactory {
     return new User(name, password);
   }
   
-  public addOwner(name: string, password: string, address: string, library: BookTracker[] ): IUser {
+  public addOwner(name: string, password: string, address: string, library: ILibrary ): IUser {
     return new Owner(name, password, address, library);
   }
   

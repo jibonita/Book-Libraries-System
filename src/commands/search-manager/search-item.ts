@@ -23,7 +23,7 @@ export class Search {
     }
 
     public static findUser(db: IGlobalDatabase, username: string): IUser | undefined{
-      const foundUser: IUser | undefined = db.userDatabase.find((user:IUser) => user.name === username);
+      const foundUser: IUser = <IUser>db.userDatabase.find((user:IUser) => user.name === username);
         if (!foundUser) {
         throw new Error(Constants.getUserNotExistErrorMessage(username));
         }

@@ -17,12 +17,12 @@ export class AddBookToLibrary implements ICommand {
     public execute(parameters: string[]): string {
         const [libraryName, bookId] = parameters;
     
-        const foundLibrary: ILibrary | undefined = this._data.libraryDatabase.find((library: ILibrary) => library.name === libraryName);
+        const foundLibrary: ILibrary = <ILibrary>this._data.libraryDatabase.find((library: ILibrary) => library.name === libraryName);
         if (!foundLibrary) {
             throw new Error(Constants.getLibraryNotFoundErrorMessage(libraryName));
         }
         
-        const foundBook: IBook | undefined = this._data.bookDatabase.find((book: IBook) => book.id === +bookId);
+        const foundBook: IBook = <IBook>this._data.bookDatabase.find((book: IBook) => book.id === +bookId);
         if (!foundBook) {
             throw new Error(Constants.getBookNotFoundErrorMessage(+bookId));
         }

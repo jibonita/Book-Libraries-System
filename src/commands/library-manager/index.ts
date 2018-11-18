@@ -1,4 +1,5 @@
 export * from './add-library'
 export * from './add-book-to-library'
+export * from './add-book-to-user-library'
 export * from './remove-book-from-library'
 export * from './list-taken-books'

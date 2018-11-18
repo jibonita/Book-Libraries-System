@@ -30,7 +30,7 @@ export class AddOwner implements ICommand {
 
         const foundLibrary: ILibrary = <ILibrary>(Search.findLibrary(this._data, library));
 
-        const owner: IUser = this._factory.addOwner(foundUser.name, foundUser.password, foundLibrary.address, foundLibrary.bookList);
+        const owner: IUser = this._factory.addOwner(foundUser.name, foundUser.password, foundLibrary.address, foundLibrary);
         //this._data.userDatabase.push(owner);
         this.addUserToLocalStorage(owner);
     
