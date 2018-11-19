@@ -10,11 +10,11 @@ List of members:
  
 ### Project Purpose
 
-> The goal of our web-app is to have
+> The goal of our project is to have
 > easier access to all libraries 
 > close to you - at the same time
 > We want to create an easy to join 
-> easy to use website where you can track
+> easy to use tool where you can track
 > books you've borrowed from all
 > partner libraries using our tool
 
@@ -25,10 +25,6 @@ https://gitlab.com/Icysteel/team-3_b
 
   - You can look up any books present in our combined database from all library partners
   - Become a library partner yourself, we accept any library collections of all sizes
-
-### Problems before refactoring
-
-
 
 ### Design Patterns used
 
