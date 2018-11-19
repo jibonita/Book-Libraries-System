@@ -12,7 +12,7 @@ List of members:
 
 > The goal of our project is to have
 > easier access to all libraries 
-> close to you - at the same time
+> close to you - at the same time.
 > We want to create an easy to join 
 > easy to use tool where you can track
 > books you've borrowed from all
